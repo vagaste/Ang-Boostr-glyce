@@ -1,11 +1,19 @@
 .bar-buttons{
     margin:5%;
-    height:80%;
+    height:60%;
     width: 80%;
-    background-color: coral;
+    border:none;
+    background-color: rgba(255, 255, 255, 0.8);
+    
 }
 mat-toolbar{
-    height: 150px;
+    height: 120px;
     background-image: url(src/assets/images/headglyce.jpg);
+    background-size: cover;
+}
+.bar-buttons-text{
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-family: 'Permanent Marker', cursive;
 
 }

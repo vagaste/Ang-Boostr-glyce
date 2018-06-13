@@ -1,3 +1,5 @@
+import { MatMenuModule, MatToolbarModule } from '@angular/material';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
-import { MatToolbarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,13 @@ import { MatToolbarModule } from '@angular/material';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatToolbarModule   
+    MatMenuModule,
+    MatToolbarModule
+  ],
+  exports: [
+    MatMenuModule,
+    MatToolbarModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
