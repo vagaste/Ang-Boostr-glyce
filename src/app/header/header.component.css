@@ -4,3 +4,8 @@
     width: 80%;
     background-color: coral;
 }
+mat-toolbar{
+    height: 150px;
+    background-image: url(src/assets/images/headglyce.jpg);
+
+}
