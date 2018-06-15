@@ -8,7 +8,7 @@
 }
 mat-toolbar{
     height: 120px;
-    background-image: url(src/assets/images/headglyce.jpg);
+    background-image: url("src/assets/images/headglyce.jpg");
     background-size: cover;
 }
 .bar-buttons-text{
