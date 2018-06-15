@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AlimentService } from './aliment.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatFormFieldModule
 
   ],
-  providers: [],
+  providers: [AlimentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
