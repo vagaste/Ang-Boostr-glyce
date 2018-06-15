@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ALIMENT_DATA } from './real-aliment';
+import { ALIMENT_DATA } from './aliment-data';
+import { Aliment } from './aliment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { ALIMENT_DATA } from './real-aliment';
 export class AlimentService {
 
   constructor() {
-    this.selectedAliment = ALIMENT_DATA;
+    this.selectedAliment = ALIMENT_DATA.Aliments;
   }
 
   selectedAliment: Aliment;
