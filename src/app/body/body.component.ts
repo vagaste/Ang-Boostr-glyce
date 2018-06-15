@@ -12,4 +12,10 @@ export class BodyComponent implements OnInit {
   ngOnInit() {
   }
 
+  public formatLabel(value: number | null) {
+    if (!value) {
+      return 0;
+    }
+    return value;
+  }
 }

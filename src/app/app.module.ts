@@ -1,7 +1,9 @@
-import { MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatMenuModule, MatToolbarModule, MatInputModule,
+  MatFormFieldModule, MatSliderModule, MatOptionModule, MatOption, MatSelect, MatSelectModule} from '@angular/material';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,11 +22,18 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     BrowserAnimationsModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSliderModule,
+    MatOptionModule,
+    MatSelectModule,
+    FlexLayoutModule
   ],
   exports: [
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule
 
   ],
   providers: [],
