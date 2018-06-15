@@ -8,12 +8,17 @@
 }
 mat-toolbar{
     height: 120px;
-    background-image: url("src/assets/images/headglyce.jpg");
+    background-image: url('src/assets/images/headglyce.jpg');
     background-size: cover;
 }
+
 .bar-buttons-text{
     color: rgb(0, 0, 0);
     font-size: 30px;
     font-family: 'Permanent Marker', cursive;
+    text-decoration-line: none;
+}
 
+.bar-buttons-text:hover{
+    color: rgb(121, 66, 66);
 }
