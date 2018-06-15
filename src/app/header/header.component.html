@@ -1,18 +1,19 @@
 <mat-toolbar fxLayout="row" fxLayoutAlign="space-around center">
-  <ng-container fxLayout="row" fxLayoutAlign="center center">
-      <button class="bar-buttons" mat-button [matMenuTriggerFor]="menu">
-        <a class="bar-buttons-text">menu</a>
+    <button class="bar-buttons" mat-button [matMenuTriggerFor]="menu">
+        <a href="#" class="bar-buttons-text">menu</a>
+    </button>
+    <button class="bar-buttons" mat-button [matMenuTriggerFor]="aliments">
+        <a href="#" class="bar-buttons-text">aliments</a>
       </button>
-      <button class="bar-buttons" mat-button [matMenuTriggerFor]="recettes">
-        <a class="bar-buttons-text">recettes</a>
+    <button class="bar-buttons" mat-button [matMenuTriggerFor]="recettes">
+        <a href="#" class="bar-buttons-text">recettes</a>
       </button>
       <button class="bar-buttons" mat-button [matMenuTriggerFor]="repas">
-        <a class="bar-buttons-text">repas</a>
+          <a href="#" class="bar-buttons-text">repas</a>
       </button>
       <button class="bar-buttons">
-        <a class="bar-buttons-text">filtre</a>
+          <a href="#" class="bar-buttons-text">filtre</a>
       </button>
-
       <mat-menu class="bar-buttons" #menu="matMenu">
           <button  class="bar-buttons"  mat-menu-item>connexion</button>
           <button  class="bar-buttons"  mat-menu-item>recommandations ANSE</button>
@@ -26,5 +27,8 @@
         <button  class="bar-buttons"  mat-menu-item>afficher</button>
         <button  class="bar-buttons"  mat-menu-item>créer</button>
       </mat-menu>
-</ng-container>
+      <mat-menu class="bar-buttons" #aliments="matMenu">
+          <button  class="bar-buttons"  mat-menu-item>afficher</button>
+          <button  class="bar-buttons"  mat-menu-item>créer</button>
+        </mat-menu>
 </mat-toolbar>
