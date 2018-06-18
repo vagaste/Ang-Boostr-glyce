@@ -11,6 +11,8 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AlimentService } from './aliment.service';
+import { RouterModule } from '@angular/router';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { AlimentService } from './aliment.service';
     MatSliderModule,
     MatOptionModule,
     MatSelectModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule
   ],
   exports: [
     MatMenuModule,

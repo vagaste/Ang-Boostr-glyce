@@ -1,11 +1,13 @@
 mat-toolbar{
-    height: 120px;
+    height: 50px;
     background-image: url("src/assets/images/footglyce2.jpg");
     background-size: cover;
+    background-color:transparent
+
 }
 
 a {
-        font-size: 70px;
+        font-size: 40px;
         font-family: 'Permanent Marker', cursive;
         color: rgb(243, 13, 13);
     }
