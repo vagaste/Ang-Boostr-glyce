@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
-<<<<<<< HEAD
 import { AlimentService } from '../aliment.service';
 import { Router } from '@angular/router';
-=======
 import { Aliment } from '../aliment';
->>>>>>> 4b3791cba0411a13f1d1464b44d14f404fa43f70
 
 @Component({
   selector: 'app-body',
