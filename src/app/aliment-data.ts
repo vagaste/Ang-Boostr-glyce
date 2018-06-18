@@ -1,5 +1,5 @@
 const ALIMENT_DATA = {
-    aliments: Aliment[
+    aliments: [
         {
             id: 1,
             name: 'Abricot',
