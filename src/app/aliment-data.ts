@@ -12,7 +12,7 @@ const ALIMENT_DATA = {
             lipid: '0,51',
             fibre: '5,7',
             salt: '0,098',
-            CG: ''
+            CG: '40'
         },
         {
             id: 2,
@@ -26,7 +26,7 @@ const ALIMENT_DATA = {
             lipid: '0,24',
             fibre: '1,33',
             salt: '0,0024',
-            CG: ''
+            CG: '30'
         },
         {
             id: 3,
@@ -40,7 +40,7 @@ const ALIMENT_DATA = {
             lipid: '0,28',
             fibre: '8,3',
             salt: '0,14',
-            CG: ''
+            CG: '60'
         },
         {
             id: 4,
