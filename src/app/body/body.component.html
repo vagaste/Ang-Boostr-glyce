@@ -1,20 +1,17 @@
 <div class="example-container" fxLayout="column">
-    <div class="example-container" fxLayout="column"> 
-  <div class="example-container" fxLayout="row" fxLayoutAlign="space-around center">         
-  
+    <!--formulaire de recherche--> 
+    <div class="example-container" fxLayout="row" fxLayoutAlign="space-around center">
     <mat-form-field class="example-margin">
-      <input matInput placeholder="Nom de l'aliment" >
+      <input matInput placeholder="Nom de l'aliment">
     </mat-form-field>
-  
-  
+
     <mat-form-field class="example-margin">
       <input matInput placeholder="Nom de la catégorie">
     </mat-form-field>
-  
 
     <mat-form-field class="example-margin">
-      <mat-label>KCalories</mat-label>
-      <mat-select >
+      <mat-label>KCalories: </mat-label>
+      <mat-select placeholder="Faites votre choix">
         <mat-option>de 0 à 50 KCal/100g</mat-option>
         <mat-option>de 50 à 100 KCal/100g</mat-option>
         <mat-option>de 100 à 200 KCal/100g</mat-option>
@@ -22,34 +19,48 @@
       </mat-select>
     </mat-form-field>
 
-
     <mat-form-field class="example-margin">
-      <mat-select placeholder="Indice Glycémique">
-        <mat-option>IG de 5 à 25</mat-option>
-        <mat-option>IG de 25 à 50</mat-option>
-        <mat-option>IG de 50 à 75</mat-option>
-        <mat-option>IG de 75 à 100</mat-option>
-        <mat-option>IG sup à 100</mat-option>
+      <mat-label>Indice glycémique: </mat-label>
+      <mat-select>
+        <mat-option>IG faible jusqu'à 39</mat-option>
+        <mat-option>IG moyen de 40 à 59</mat-option>
+        <mat-option>IG fort > à 60</mat-option>
       </mat-select>
     </mat-form-field>
-  </div>
   <button type="submit">Rechercher</button>
 </div>
-
-
-<div class="example-container" fxLayout="row" fxLayoutAlign="space-around center"> 
-  <p for="name">Aliment</p>
-        <!--chercher bouton filtre-->
-  <p for="category">Catégorie</p>
-  <!--chercher bouton filtre-->
-  <p for="calorie">KCalorie/100g</p>
+  <!--en tete des colonnes de mon tableau de resultats-->
+  <div class="example-container" fxLayout="row" fxLayoutAlign="space-around center"> 
+    <p for="name">Aliment</p>
     <!--chercher bouton filtre-->
-  
-  <p for="IG">Indice Glycémique</p>
+    <p for="category">Catégorie</p>
     <!--chercher bouton filtre-->
-  
-  <p for="CG">Charge Glycémique/100g</p>
-      <!--chercher bouton filtre-->
+    <p for="calorie">KCalorie/100g</p>
+    <!--chercher bouton filtre-->
+
+    <p for="IG">Indice Glycémique</p>
+    <!--chercher bouton filtre-->
+
+    <p for="CG">Charge Glycémique/100g</p>
+    <!--chercher bouton filtre-->
+  </div>
+
+  <!--pop up de proprietes et champ qte, pour calcul CG-->
+  <!--<div class="example-container" fxLayout="row" fxLayoutAlign="space-around center">
+    <p for="reference">100g: </p> 
+    <p for="protein">Protéines: {{ alimentSelected.protein }}</p>
+    <p for="carb">Glucides: {{ alimentSelected.carb }}</p>
+    <p for="sugar">Sucre: {{ alimentSelected.sugar }}</p>    
+    <p for="lipid">Lipides: {{ alimentSelected.lipid }}</p>
+    <p for="fibre">Fibres: {{ alimentSelected.fibre }}</p>
+    <p for="salt">Sel: {{ alimentSelected.salt }}</p>
+    <label for="QuantityAliment">Poids en g:</label>
+    <input type="number" id="QuantityAliment" (ngModel)="quantityAliment">
+    <button (onclick)="calculCg()">Calculer la CG</button>
+    <p for="CG">Charge Glycémique: </p>
+    <output>x{{ resultCg }}</output>
+  </div-->
+
 </div>
 
 <!-- je propose d'ajouter ici l'alimentation de la liste des aliments (val)
