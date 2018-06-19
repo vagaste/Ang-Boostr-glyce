@@ -1,6 +1,7 @@
 mat-toolbar{
     height: 50px;
-    background-image: url("src/assets/images/footglyce2.jpg"); 
+    /* background-image: url("src/assets/images/footglyce2.jpg");  */
+    background-color: lightgray;
     background-size: cover;
     /* opacity:.7; */
 }
