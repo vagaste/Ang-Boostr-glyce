@@ -6,12 +6,12 @@ mat-toolbar{
 
 }
 
-a {
+.titre {
         font-size: 40px;
         font-family: 'Permanent Marker', cursive;
         color: rgb(243, 13, 13);
     }
-b {
+a {
         font-size: 30px;
         font-family: 'Permanent Marker', cursive;
         color: rgb(245, 233, 62);
