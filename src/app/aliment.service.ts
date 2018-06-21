@@ -6,11 +6,9 @@ import ALIMENT_DATA from './aliment-data';
   providedIn: 'root'
 })
 export class AlimentService {
+  searchedAliments;
 
   constructor() {
-    this.selectedAliment = ALIMENT_DATA.aliments;
+    this.searchedAliments = ALIMENT_DATA.aliments;
   }
-
-  selectedAliment;
-
 }

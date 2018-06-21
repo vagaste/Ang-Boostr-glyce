@@ -1,49 +1,62 @@
-<div class="example-container" fxLayout="column">
     <!--formulaire de recherche--> 
-    <div class="example-container" fxLayout="row" fxLayoutAlign="space-around center">
-    <mat-form-field class="example-margin">
-      <input matInput placeholder="Nom de l'aliment">
-    </mat-form-field>
+    <div class="search-form" fxLayout="row" fxLayoutAlign="space-around center">
+      <mat-form-field class="form-field-margin">
+       <input matInput placeholder="Nom de l'aliment">
+      </mat-form-field>
 
-    <mat-form-field class="example-margin">
-      <input matInput placeholder="Nom de la catégorie">
-    </mat-form-field>
+      <mat-form-field class="form-field-margin">
+        <input matInput placeholder="Nom de la catégorie">
+      </mat-form-field>
 
-    <mat-form-field class="example-margin">
-      <mat-label>KCalories: </mat-label>
-      <mat-select placeholder="Faites votre choix">
-        <mat-option>de 0 à 50 KCal/100g</mat-option>
-        <mat-option>de 50 à 100 KCal/100g</mat-option>
-        <mat-option>de 100 à 200 KCal/100g</mat-option>
-        <mat-option>sup à 200 KCal/100g</mat-option>
-      </mat-select>
-    </mat-form-field>
+      <mat-form-field class="form-field-margin">
+        <mat-label>KCal/100g : </mat-label>
+        <mat-select placeholder="Faites votre choix">
+          <mat-option value="1">de 0 à 50</mat-option>
+          <mat-option value="2">de 50 à 100</mat-option>
+          <mat-option value="3">de 100 à 200</mat-option>
+          <mat-option value="4">sup à 200</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <mat-form-field class="example-margin">
-      <mat-label>Indice glycémique: </mat-label>
-      <mat-select>
-        <mat-option>IG faible jusqu'à 39</mat-option>
-        <mat-option>IG moyen de 40 à 59</mat-option>
-        <mat-option>IG fort > à 60</mat-option>
-      </mat-select>
-    </mat-form-field>
-  <button type="submit">Rechercher</button>
-</div>
-  <!--en tete des colonnes de mon tableau de resultats-->
-  <div class="example-container" fxLayout="row" fxLayoutAlign="space-around center"> 
-    <p for="name">Aliment</p>
-    <!--chercher bouton filtre-->
-    <p for="category">Catégorie</p>
-    <!--chercher bouton filtre-->
-    <p for="calorie">KCalorie/100g</p>
-    <!--chercher bouton filtre-->
-
-    <p for="IG">Indice Glycémique</p>
-    <!--chercher bouton filtre-->
-
-    <p for="CG">Charge Glycémique/100g</p>
-    <!--chercher bouton filtre-->
+      <mat-form-field class="form-field-margin">
+        <mat-label>Indice glycémique: </mat-label>
+        <mat-select>
+          <mat-option value="IG faible">IG faible jusqu'à 39</mat-option>
+          <mat-option value="IG moyen">IG moyen de 40 à 59</mat-option>
+          <mat-option value="IG fort">IG fort > à 60</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <button mat-icon-button><i class="material-icons send">send</i></button>
   </div>
+  <!--en tete des colonnes de mon tableau de resultats-->
+  <div class="aliment-table">
+      <table matSort (matSortChange)="sortData($event)">
+          <tr>
+            <th mat-sort-header="name">Aliment</th>
+            <th mat-sort-header="category">Categorie</th>
+            <th mat-sort-header="energy">Calories</th>
+            <th mat-sort-header="ig">Indice Glycémique</th>
+            <th mat-sort-header="cg">Charge Glycémique</th>
+          </tr>
+        
+          <tr *ngFor="let aliment of sortedAliments">
+            <td>{{aliment.name}}</td>
+            <td>{{aliment.category}}</td>
+            <td>{{aliment.energy}}</td>
+            <td>{{aliment.ig}}</td>
+            <td>{{aliment.cg}}</td>
+          </tr>
+        </table>
+      </div>
+    
+  
+
+  <!-- <div *ngIf="realDataService.idUrl">
+    <div>
+  {{ realDataService.listReal[realDataService.idUrl] }}
+    </div>
+  </div> -->
+
 
   <!--pop up de proprietes et champ qte, pour calcul CG-->
   <!--<div class="example-container" fxLayout="row" fxLayoutAlign="space-around center">
@@ -60,8 +73,6 @@
     <p for="CG">Charge Glycémique: </p>
     <output>x{{ resultCg }}</output>
   </div-->
-
-</div>
 
 <!-- je propose d'ajouter ici l'alimentation de la liste des aliments (val)
   

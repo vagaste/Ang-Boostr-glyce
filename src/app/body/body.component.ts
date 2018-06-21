@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import { AlimentService } from '../aliment.service';
 import { Router } from '@angular/router';
 import { Aliment } from '../aliment';
+import {Sort} from '@angular/material';
 
 @Component({
   selector: 'app-body',
@@ -18,21 +19,45 @@ resultCg;
   // déclarer ici l'objet "aliments"
   constructor(public alimentService: AlimentService) { }
 
-  aliments;
+  sortedAliments;
   ngOnInit() {
     // (val) le composant est prêt à être utilisé : mettre son code ici
     // l'objet aliment est alimenté avec l'objet aliment déclaré dans le service alimentService
-    this.aliments = this.alimentService.selectedAliment;
+    this.sortedAliments = this.alimentService.searchedAliments.slice();
   }
 
+  sortData(sort: Sort) {
+    const data = this.alimentService.searchedAliments.slice();
+    if (!sort.active || sort.direction === '') {
+      this.sortedAliments = data;
+      return;
+    }
+
+    this.sortedAliments = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'name': return compare(a.name, b.name, isAsc);
+        case 'category': return compare(a.category, b.category, isAsc);
+        case 'energy': return compare(a.energy, b.energy, isAsc);
+        case 'ig': return compare(a.ig, b.ig, isAsc);
+        case 'cg': return compare(a.cg, b.cg, isAsc);
+        default: return 0;
+      }
+    });
+  }
+}
+
+function compare(a, b, isAsc) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
   //quantite de glucide(qg), pour la quantite de l aliment saisie (quantite de l aliment*quantite de glucide pour 100g)/100
 //formule (ig*qg)/100 
-public calculCg (alimentSelected, quantityAliment) {
+/* public calculCg (alimentSelected, quantityAliment) {
     if (alimentSelected.ig === '') {
       return 0;
     }
     return this.resultCg = ((alimentSelected.ig * ((this.quantityAliment * alimentSelected.carb) / 100)) / 100);
-  }
+  } */
 /* (val) méthode pour afficher le détail : il faut aussi ajouter
 private router: Router
 dans le constructeur mais ça plante à l'exécution
@@ -44,4 +69,4 @@ dans le constructeur mais ça plante à l'exécution
 
   }
   */
-}
+

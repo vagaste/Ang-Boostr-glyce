@@ -1,15 +1,15 @@
 export interface Aliment {
-    id: Number;
+    id: number;
     name: String;
     categorie: String;
-    energy: Number;
-    ig: Number;
-    protein: Number;
-    carb: Number;
-    sugar: Number;
-    lipid: Number;
-    fibre: Number;
-    salt: Number;
-    cg100g: Number;
+    energy: number;
+    ig: number;
+    protein: number;
+    carb: number;
+    sugar: number;
+    lipid: number;
+    fibre: number;
+    salt: number;
+    cg: number;
 
 }
