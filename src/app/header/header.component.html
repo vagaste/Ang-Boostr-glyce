@@ -2,7 +2,7 @@
     <button class="bar-buttons" mat-button [matMenuTriggerFor]="menu">
         <a href="#" class="bar-buttons-text">menu</a>
     </button>
-    <button class="bar-buttons" mat-button [matMenuTriggerFor]="aliments">
+    <button class="bar-buttons" mat-button >
         <a href="#" class="bar-buttons-text">aliments</a>
       </button>
     <button class="bar-buttons" mat-button [matMenuTriggerFor]="recettes">
@@ -12,16 +12,16 @@
           <a href="#" class="bar-buttons-text">repas</a>
       </button>
       <mat-menu class="bar-buttons" #menu="matMenu">
-          <button  class="bar-buttons"  mat-menu-item>connexion</button>
-          <button  class="bar-buttons"  mat-menu-item>recommandations ANSE</button>
-        <button  class="bar-buttons"  mat-menu-item>contacts</button>
+          <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">connexion</a></button>
+          <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">recommandations</a> ANSE</button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">contacts</a></button>
       </mat-menu>
       <mat-menu class="bar-buttons" #recettes="matMenu">
-        <button  class="bar-buttons"  mat-menu-item>afficher</button>
-        <button  class="bar-buttons"  mat-menu-item>créer</button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">afficher</a></button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">créer</a></button>
       </mat-menu>
       <mat-menu class="bar-buttons" #repas="matMenu">
-        <button  class="bar-buttons"  mat-menu-item>afficher</button>
-        <button  class="bar-buttons"  mat-menu-item>créer</button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">afficher</a></button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">créer</a></button>
       </mat-menu>
 </mat-toolbar>

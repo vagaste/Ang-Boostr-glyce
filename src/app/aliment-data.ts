@@ -1,3 +1,5 @@
+import { Aliment } from './aliment';
+
 const ALIMENT_DATA = {
     aliments: [
         {
