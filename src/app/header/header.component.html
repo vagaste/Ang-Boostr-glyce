@@ -1,4 +1,4 @@
-<mat-toolbar fxLayout="row" fxLayoutAlign="space-around center">
+<mat-toolbar class="mt-tb-head" fxLayout="row" fxLayoutAlign="space-around center">
     <button class="bar-buttons" mat-button [matMenuTriggerFor]="menu">
         <a href="#" class="bar-buttons-text">menu</a>
     </button>
@@ -12,16 +12,16 @@
           <a href="#" class="bar-buttons-text">repas</a>
       </button>
       <mat-menu class="bar-buttons" #menu="matMenu">
-          <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">connexion</a></button>
-          <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">recommandations</a> ANSE</button>
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">contacts</a></button>
+          <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">connexion</a></button>
+          <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">recommandations</a> ANSE</button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">contacts</a></button>
       </mat-menu>
       <mat-menu class="bar-buttons" #recettes="matMenu">
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">afficher</a></button>
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">créer</a></button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">afficher</a></button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">créer</a></button>
       </mat-menu>
       <mat-menu class="bar-buttons" #repas="matMenu">
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">afficher</a></button>
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text">créer</a></button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">afficher</a></button>
+        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">créer</a></button>
       </mat-menu>
 </mat-toolbar>

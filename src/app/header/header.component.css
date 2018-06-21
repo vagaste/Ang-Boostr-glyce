@@ -6,7 +6,7 @@
     background-color: rgba(255, 255, 255, 0.8);
     
 }
-mat-toolbar{
+.mt-tb-head{
     height: 120px;
     background-image: url('src/assets/images/headglyce.jpg');
     background-size: cover;
@@ -18,7 +18,19 @@ mat-toolbar{
     font-family: 'Permanent Marker', cursive;
     text-decoration-line: none;
 }
+.bar-buttons-text-drop{
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-family: 'Permanent Marker', cursive;
+    text-decoration-line: none;
+}
 
 .bar-buttons-text:hover{
     color: rgb(121, 66, 66);
+}
+.bar-buttons-text-drop:hover{
+    color: rgb(121, 66, 66);
+}
+mat-menu-item{
+    width: auto;
 }
