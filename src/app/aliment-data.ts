@@ -2,22 +2,9 @@ import { Aliment } from './aliment';
 
 const ALIMENT_DATA = {
     aliments: [
+        
         {
             id: 1,
-            name: 'Abricot',
-            category: 'fruits frais',
-            energy: '42,6',
-            ig: '30',
-            protein: '1,86',
-            carb: '39,8',
-            sugar: '36,6',
-            lipid: '0,51',
-            fibre: '5,7',
-            salt: '0,098',
-            cg: '40'
-        },
-        {
-            id: 2,
             name: 'Ananas',
             category: 'fruits frais',
             energy: '53,2',
@@ -31,7 +18,7 @@ const ALIMENT_DATA = {
             cg: '30'
         },
         {
-            id: 3,
+            id: 2,
             name: 'Artichaud',
             category: 'légumes cuits',
             energy: '33,2',
@@ -45,7 +32,7 @@ const ALIMENT_DATA = {
             cg: '60'
         },
         {
-            id: 4,
+            id: 3,
             name: 'Banane',
             category: 'fruits frais',
             energy: '90',
@@ -57,6 +44,20 @@ const ALIMENT_DATA = {
             fibre: '1,9',
             salt: '0,0038',
             cg: ''
+        },
+        {
+            id: 4,
+            name: 'Abricot',
+            category: 'fruits frais',
+            energy: '42,6',
+            ig: '30',
+            protein: '1,86',
+            carb: '39,8',
+            sugar: '36,6',
+            lipid: '0,51',
+            fibre: '5,7',
+            salt: '0,098',
+            cg: '40'
         },
         {
             id: 5,

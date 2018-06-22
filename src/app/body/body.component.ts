@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder,
+         FormGroup } from '@angular/forms';
 import { AlimentService } from '../aliment.service';
 import { Router } from '@angular/router';
 import { Aliment } from '../aliment';
-import {Sort} from '@angular/material';
+import { Sort, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-body',
@@ -15,16 +16,18 @@ quantityAliment: number;
 alimentSelected: Aliment;
 resultCg;
 displayedColumns = ['name', 'category', 'energy', 'ig', 'cg'];
-
+sortedAliments;
+@ViewChild(MatPaginator) paginator: MatPaginator;
   // (val) ici on injecte le service AlimentService : nom + type. L'injection permet de
   // déclarer ici l'objet "aliments"
   constructor(public alimentService: AlimentService) { }
 
-  sortedAliments;
   ngOnInit() {
     // (val) le composant est prêt à être utilisé : mettre son code ici
     // l'objet aliment est alimenté avec l'objet aliment déclaré dans le service alimentService
+    
     this.sortedAliments = this.alimentService.searchedAliments.slice();
+    this.sortedAliments.paginator = this.paginator;
   }
 
   sortData(sort: Sort) {

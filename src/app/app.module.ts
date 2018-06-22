@@ -4,7 +4,9 @@ import { MatMenuModule,
          MatFormFieldModule,
          MatSliderModule,
          MatOptionModule,
-         MatSelectModule} from '@angular/material';
+         MatSelectModule,
+         MatTableDataSource
+        } from '@angular/material';
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
 
@@ -22,7 +24,7 @@ import { AlimentService } from './aliment.service';
 import { RouterModule } from '@angular/router';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 
 
@@ -50,8 +52,9 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     MatSortModule,
     MatDividerModule,
-    MatTableModule
-  ],
+    MatTableModule,
+    MatPaginatorModule
+    ],
   exports: [
     MatMenuModule,
     MatToolbarModule,
