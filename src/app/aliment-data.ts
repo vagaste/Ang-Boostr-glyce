@@ -21,7 +21,7 @@ const ALIMENT_DATA = {
             name: 'Ananas',
             category: 'fruits frais',
             energy: '53,2',
-            ig: '65',
+            ig: '63',
             protein: '0,52',
             carb: '11',
             sugar: '10,4',

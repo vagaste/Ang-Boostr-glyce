@@ -39,15 +39,17 @@ displayedColumns = ['name', 'category', 'energy', 'ig', 'cg'];
       switch (sort.active) {
         case 'name': return compare(a.name, b.name, isAsc);
         case 'category': return compare(a.category, b.category, isAsc);
-        case 'energy': return compare(a.energy, b.energy, isAsc);
-        case 'ig': return compare(a.ig, b.ig, isAsc);
-        case 'cg': return compare(a.cg, b.cg, isAsc);
+        case 'energy': return comparenum(a.energy, b.energy, isAsc);
+        case 'ig': return comparenum(a.ig, b.ig, isAsc);
+        case 'cg': return comparenum(a.cg, b.cg, isAsc);
         default: return 0;
       }
     });
   }
 }
-
+function comparenum(a, b, isAsc) {
+  return (parseFloat(a) < parseFloat(b) ? -1 : 1) * (isAsc ? 1 : -1);
+}
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }
