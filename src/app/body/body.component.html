@@ -17,7 +17,6 @@
           <mat-option value="4">sup à 200</mat-option>
         </mat-select>
       </mat-form-field>
-
       <mat-form-field class="form-field-margin">
         <mat-label>Indice glycémique: </mat-label>
         <mat-select>
@@ -28,9 +27,52 @@
       </mat-form-field>
     <button mat-icon-button><i class="material-icons send">send</i></button>
   </div>
-  <!--en tete des colonnes de mon tableau de resultats-->
-  <div class="aliment-table">
+  <!-- en tete des colonnes de mon tableau de resultats-->
+  <div >
+  <table fxFill mat-table [dataSource]="sortedAliments" matSort (matSortChange)="sortData($event)" class="">
+
+      <!-- Aliment Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Aliment </th>
+        <td mat-cell *matCellDef="let aliment"> {{aliment.name}} </td>
+      </ng-container>
+    
+      <!-- Categorie Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Categorie </th>
+        <td mat-cell *matCellDef="let aliment"> {{aliment.category}} </td>
+      </ng-container>
+    
+      <!-- Calories Column -->
+      <ng-container matColumnDef="energy">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Calories </th>
+        <td mat-cell *matCellDef="let aliment"> {{aliment.energy}} </td>
+      </ng-container>
+    
+      <!-- Indice Glycémique Column -->
+      <ng-container matColumnDef="ig">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Indice Glycémique </th>
+        <td mat-cell *matCellDef="let aliment"> {{aliment.ig}} </td>
+      </ng-container>
+
+      <!-- Charge Glycémique Column -->
+      <ng-container matColumnDef="cg">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Charge Glycémique </th>
+          <td mat-cell *matCellDef="let aliment"> {{aliment.cg}} </td>
+        </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+
+<!-- ############################################################ -->
+<!-- #########         ANCIEN CODE A SUPPRIMER         ########## -->
+<!-- ############################################################ -->
+
+  <!-- <div class="aliment-table" fxLayout="row" fxLayoutAlign="space-around center">
       <table matSort (matSortChange)="sortData($event)">
+        <thead>
           <tr>
             <th mat-sort-header="name">Aliment</th>
             <th mat-sort-header="category">Categorie</th>
@@ -38,7 +80,9 @@
             <th mat-sort-header="ig">Indice Glycémique</th>
             <th mat-sort-header="cg">Charge Glycémique</th>
           </tr>
-        
+        </thead> -->
+  <!-- colonnes de mon tableau de resultats-->
+        <!-- <tbody>
           <tr *ngFor="let aliment of sortedAliments">
             <td>{{aliment.name}}</td>
             <td>{{aliment.category}}</td>
@@ -46,9 +90,11 @@
             <td>{{aliment.ig}}</td>
             <td>{{aliment.cg}}</td>
           </tr>
+          <tbody> 
         </table>
-      </div>
-    
+      </div> -->
+<!-- ############################################################ -->
+<!-- ############################################################ -->    
   
 
   <!-- <div *ngIf="realDataService.idUrl">

@@ -1,6 +1,12 @@
-import { MatMenuModule, MatToolbarModule, MatInputModule,
-  MatFormFieldModule, MatSliderModule, MatOptionModule, MatSelectModule} from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MatMenuModule,
+         MatToolbarModule,
+         MatInputModule,
+         MatFormFieldModule,
+         MatSliderModule,
+         MatOptionModule,
+         MatSelectModule} from '@angular/material';
+import { FormsModule,
+         ReactiveFormsModule} from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,8 +20,10 @@ import { FooterComponent } from './footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AlimentService } from './aliment.service';
 import { RouterModule } from '@angular/router';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDividerModule } from '@angular/material/divider';
 
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
@@ -40,7 +48,9 @@ import {MatSortModule} from '@angular/material/sort';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatSortModule
+    MatSortModule,
+    MatDividerModule,
+    MatTableModule
   ],
   exports: [
     MatMenuModule,

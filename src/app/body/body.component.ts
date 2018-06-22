@@ -14,6 +14,7 @@ export class BodyComponent implements OnInit {
 quantityAliment: number;
 alimentSelected: Aliment;
 resultCg;
+displayedColumns = ['name', 'category', 'energy', 'ig', 'cg'];
 
   // (val) ici on injecte le service AlimentService : nom + type. L'injection permet de
   // déclarer ici l'objet "aliments"

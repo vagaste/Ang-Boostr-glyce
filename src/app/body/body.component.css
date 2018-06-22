@@ -8,6 +8,11 @@
       padding-right: 2%;  
       background-color: rgba(211, 211, 211, 0.2)
   }
+ .aliment-table{
+  padding-left: 2%;
+  padding-right: 2%;  
+  background-color: rgba(211, 211, 211, 0.2)
+ } 
 .send{
     color: rgb(255, 49, 76);
   }
