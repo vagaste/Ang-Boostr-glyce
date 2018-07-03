@@ -13,10 +13,8 @@ mat-toolbar{
         /* opacity:1; */
     }
 a {
-        font-size: 30px;
-        font-family: 'Permanen
-        t Marker', cursive;
-        color: rgb(248, 3, 3);
-        /* opacity:1; */
-    }
-
+            font-size: 30px;
+            font-family: 'Permanent Marker', cursive;
+            color: rgb(10, 10, 10);
+            /* opacity:1; */
+            }
