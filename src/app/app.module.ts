@@ -4,7 +4,7 @@ import { MatMenuModule,
          MatFormFieldModule,
          MatSliderModule,
          MatOptionModule,
-         MatSelectModule
+         MatSelectModule,
          MatTableDataSource,
          MatIconModule
         } from '@angular/material';
