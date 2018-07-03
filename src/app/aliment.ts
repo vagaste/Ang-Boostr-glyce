@@ -1,7 +1,7 @@
 export interface Aliment {
     id: number;
-    name: String;
-    categorie: String;
+    name: string;
+    category: string;
     energy: number;
     ig: number;
     protein: number;

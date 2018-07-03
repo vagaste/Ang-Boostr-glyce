@@ -4,15 +4,14 @@ import { MatMenuModule,
          MatFormFieldModule,
          MatSliderModule,
          MatOptionModule,
-         MatSelectModule,
-         MatTableDataSource
+         MatSelectModule
         } from '@angular/material';
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, AfterViewInit } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +25,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { CdkTableModule } from '@angular/cdk/table';
 
 
 @NgModule({
@@ -53,8 +53,9 @@ import { MatTableModule } from '@angular/material/table';
     MatSortModule,
     MatDividerModule,
     MatTableModule,
-    MatPaginatorModule
-    ],
+    MatPaginatorModule,
+    CdkTableModule
+  ],
   exports: [
     MatMenuModule,
     MatToolbarModule,
