@@ -5,7 +5,8 @@ import { MatMenuModule,
          MatSliderModule,
          MatOptionModule,
          MatSelectModule,
-         MatTableDataSource
+         MatTableDataSource,
+         MatIconModule
         } from '@angular/material';
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
@@ -53,7 +54,8 @@ import { MatTableModule } from '@angular/material/table';
     MatSortModule,
     MatDividerModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule
     ],
   exports: [
     MatMenuModule,
