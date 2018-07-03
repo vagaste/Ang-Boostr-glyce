@@ -4,13 +4,9 @@ import { MatMenuModule,
          MatFormFieldModule,
          MatSliderModule,
          MatOptionModule,
-<<<<<<< HEAD
          MatSelectModule
-=======
-         MatSelectModule,
          MatTableDataSource,
          MatIconModule
->>>>>>> e4032ec4effcd29f7f7d011683269d129135265f
         } from '@angular/material';
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
@@ -60,13 +56,9 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
-<<<<<<< HEAD
-    CdkTableModule
-  ],
-=======
+    CdkTableModule,
     MatIconModule
     ],
->>>>>>> e4032ec4effcd29f7f7d011683269d129135265f
   exports: [
     MatMenuModule,
     MatToolbarModule,
