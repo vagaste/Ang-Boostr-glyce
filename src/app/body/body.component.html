@@ -27,14 +27,54 @@
       </mat-form-field>
     <button mat-icon-button><i class="material-icons send">send</i></button>
   </div>
-  <!-- en tete des colonnes de mon tableau de resultats-->
+
+  <!-- formulaire de calcul de la charge glycémique, calories...--> 
+  <div class="form-calcul">
+      <label>Aliment :
+          <input type="texte" [(ngModel)]= "alimentSelected.name"/>
+      </label>
+      <label> Grammes :
+          <input type="number" [(ngModel)] = "quantityAliment"/>
+      </label>
+      <label> Charge glycémique :
+          {{resultCg}}
+       <button>
+        <a (click)="calculCg(alimentSelected, quantityAliment)">Submit</a>
+       </button>
+      </label>
+   <!--
+    <mat-form-field>
+      <textarea matInput placeholder="aliment">{{alimentSelected.name}}</textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="quantité"#quantity value="{{quantityAliment}}">
+    </mat-form-field>
+
+    <button>
+        <a (click)="calculCg(alimentSelected, quantity)">Submit</a>
+    </button>
+
+    <mat-form-field>
+        <textarea matInput placeholder="Charge glycémique" >{{resultCg}}</textarea>
+    </mat-form-field>
+
+  -->
+
+  </div>
+
+
   <div class="mat-elevation-z8">
   <table fxFill mat-table [dataSource]="sortedAliments" matSort (matSortChange)="sortData($event)" class="">
 
       <!-- Aliment Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Aliment </th>
-        <td mat-cell *matCellDef="let aliment"> {{aliment.name}} </td>
+        <td mat-cell *matCellDef="let aliment">
+          <a (click)="selectAliment(aliment, $event)" href= "">
+           {{aliment.name}}
+          </a> 
+        </td>
       </ng-container>
     
       <!-- Categorie Column -->
@@ -68,61 +108,8 @@
     <mat-paginator [length]="listAliments.length" [pageSize]="2" [pageSizeOptions]="[2, 5, 10]" showFirstLastButtons></mat-paginator>
   </div>
 
-<!-- ############################################################ -->
-<!-- #########         ANCIEN CODE A SUPPRIMER         ########## -->
-<!-- ############################################################ -->
 
-  <!-- <div class="aliment-table" fxLayout="row" fxLayoutAlign="space-around center">
-      <table matSort (matSortChange)="sortData($event)">
-        <thead>
-          <tr>
-            <th mat-sort-header="name">Aliment</th>
-            <th mat-sort-header="category">Categorie</th>
-            <th mat-sort-header="energy">Calories</th>
-            <th mat-sort-header="ig">Indice Glycémique</th>
-            <th mat-sort-header="cg">Charge Glycémique</th>
-          </tr>
-        </thead> -->
-  <!-- colonnes de mon tableau de resultats-->
-        <!-- <tbody>
-          <tr *ngFor="let aliment of sortedAliments">
-            <td>{{aliment.name}}</td>
-            <td>{{aliment.category}}</td>
-            <td>{{aliment.energy}}</td>
-            <td>{{aliment.ig}}</td>
-            <td>{{aliment.cg}}</td>
-          </tr>
-          <tbody> 
-        </table>
-      </div> -->
-<!-- ############################################################ -->
-<!-- ############################################################ -->    
-  
-
-  <!-- <div *ngIf="realDataService.idUrl">
-    <div>
-  {{ realDataService.listReal[realDataService.idUrl] }}
-    </div>
-  </div> -->
-
-
-  <!--pop up de proprietes et champ qte, pour calcul CG-->
-  <!--<div class="example-container" fxLayout="row" fxLayoutAlign="space-around center">
-    <p for="reference">100g: </p> 
-    <p for="protein">Protéines: {{ alimentSelected.protein }}</p>
-    <p for="carb">Glucides: {{ alimentSelected.carb }}</p>
-    <p for="sugar">Sucre: {{ alimentSelected.sugar }}</p>    
-    <p for="lipid">Lipides: {{ alimentSelected.lipid }}</p>
-    <p for="fibre">Fibres: {{ alimentSelected.fibre }}</p>
-    <p for="salt">Sel: {{ alimentSelected.salt }}</p>
-    <label for="QuantityAliment">Poids en g:</label>
-    <input type="number" id="QuantityAliment" (ngModel)="quantityAliment">
-    <button (onclick)="calculCg()">Calculer la CG</button>
-    <p for="CG">Charge Glycémique: </p>
-    <output>x{{ resultCg }}</output>
-  </div-->
-
-<!-- je propose d'ajouter ici l'alimentation de la liste des aliments (val)
+<!-- je propose d'ajouter ici l'alimentation de la liste des aliments
   
   <ul>
   <li *ngFor="let aliment of aliments">
