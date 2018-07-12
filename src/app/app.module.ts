@@ -5,8 +5,8 @@ import { MatMenuModule,
          MatSliderModule,
          MatOptionModule,
          MatSelectModule,
-         MatTableDataSource,
-         MatIconModule
+         MatIconModule,
+         MatAutocompleteModule
         } from '@angular/material';
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
@@ -22,20 +22,43 @@ import { BodyComponent } from './body/body.component';
 import { FooterComponent } from './footer/footer.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AlimentService } from './aliment.service';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
+import { RecetteComponent } from './recette/recette.component';
+import { AlimentsComponent } from './aliments/aliments.component';
 
+const routes: Routes = [
+
+// path = ' ' signifie que si on a du blanc dans l'url après la home page, le
+// routeur nous affiche la page bio par défaut
+// path = "**" : s'il y a n'importe quoi dans l'url, le routeur nous affiche la page bio
+// L'ordre des chemins est important
+// patchMatch : il faut que ça corresponde exactement à ce qui est mis dans le path
+
+  { path: '', redirectTo: '/aliments', pathMatch: 'full' },
+  {
+   path: 'aliments',
+    component: AlimentsComponent},
+  {
+    path: 'recette/create',
+    component: RecetteComponent},
+  {
+      path: '**',
+      component: AlimentsComponent}
+   ] ;
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     BodyComponent,
-    FooterComponent
+    FooterComponent,
+    RecetteComponent,
+    AlimentsComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +80,9 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatTableModule,
     MatPaginatorModule,
     CdkTableModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule.forRoot(routes),
+    MatAutocompleteModule
     ],
   exports: [
     MatMenuModule,

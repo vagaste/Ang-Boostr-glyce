@@ -3,7 +3,7 @@
         <a href="#" class="bar-buttons-text">menu</a>
     </button>
     <button class="bar-buttons" mat-button >
-        <a href="#" class="bar-buttons-text">aliments</a>
+        <a href="/aliments" class="bar-buttons-text">aliments</a>
       </button>
     <button class="bar-buttons" mat-button [matMenuTriggerFor]="recettes">
         <a href="#" class="bar-buttons-text">recettes</a>
@@ -18,7 +18,7 @@
       </mat-menu>
       <mat-menu class="bar-buttons" #recettes="matMenu">
         <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">afficher</a></button>
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">créer</a></button>
+        <button  class="bar-buttons"  mat-menu-item><a href="/recette/create" class="bar-buttons-text-drop">créer</a></button>
       </mat-menu>
       <mat-menu class="bar-buttons" #repas="matMenu">
         <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">afficher</a></button>

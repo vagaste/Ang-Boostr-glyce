@@ -1,0 +1,88 @@
+<h2>
+  Créez votre propre recette !
+</h2>
+<br>
+<br>
+
+<form>
+  <mat-form-field>
+    <input matInput name="recette" placeholder="nom de la recette" />
+  </mat-form-field>
+  <br>
+
+  <br>
+  <button mat-icon-button>
+    <mat-icon>
+      <a (click)="nbrAliments()">add</a>
+    </mat-icon>
+  </button>
+  <br>
+
+  <!-- autocomplete -->
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text" placeholder="Saisir un aliment" 
+      aria-label="recetteAliment" 
+      matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <!-- formulaire de calcul de la charge glycémique, calories...-->
+    <label> Grammes :
+      <input type="number" />
+    </label>
+    <label> Charge glycémique : <!--{{resultCg}} -->
+      <button>
+        <a>Calculer</a>
+      </button>
+    </label>
+    <!-- <mat-form-field>
+      <input matInput name="quantityAliment" placeholder="poids en g." />
+    </mat-form-field>
+    <label> Charge glycémique
+      <button>
+        <a>Calculer</a>
+      </button>
+    </label> -->
+  </form>
+
+
+  <!-- ligne simple -->
+  <!-- <form>
+    <mat-form-field>
+      <input matInput name="aliment" placeholder="saisir un aliment" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput name="quantityAliment" placeholder="poids en g." />
+    </mat-form-field>
+    <label> Charge glycémique
+      <button>
+        <a>Calculer</a>
+      </button>
+    </label>
+  </form>
+  <br>
+  <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Enregistrer</button> -->
+
+  <!-- EX ALIMENT -->
+  <!-- <form *ngIf="recette" (ngSubmit)="create()"> 
+  <mat-form-field>
+    <input matInput name="aliment" 
+      placeholder="saisir un aliment" 
+      [(ngModel)]="recette.idAliment"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput name="quantityAliment" 
+      placeholder="poids en g." 
+      [(ngModel)]="recette.qty"/>
+  </mat-form-field>
+  <label> Charge glycémique : {{resultCg}}
+    <button>
+      <a (click)="calculCg(alimentSelected, quantityAliment)">Calculer</a>
+    </button>
+  </label>
+  <button>Envoyer</button>
+</form> -->
