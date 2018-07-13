@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, tap} from 'rxjs/operators';
 import { Aliment } from '../aliment';
 import { AlimentService } from '../aliment.service';
 import { RecetteService } from '../recette.service';
@@ -17,13 +17,14 @@ export class RecetteComponent implements OnInit {
   myControl = new FormControl();
   options: Aliment[];
   filteredOptions: Observable<Aliment[]>;
-  resultCg: number;
   cptr: number;
   quantityPortion: number;
-  cgPortion: number;
+  resultCg: number;
+  cgRecette: number;
   recette: RecetteService;
   portion: PortionService;
-  tableauPortion;
+  tableauPortion = [];
+  selectedAliment: Aliment;
 
   constructor(public alimentService: AlimentService,
     public recetteService: RecetteService, public portionService: PortionService) { }
@@ -40,11 +41,17 @@ export class RecetteComponent implements OnInit {
     this.filteredOptions = this.myControl.valueChanges
     .pipe(
       startWith<string | Aliment>(''),
+      tap(value => {
+        if (typeof value !== 'string') {
+        this.selectedAliment = value;
+        }
+        }),
       map(value => typeof value === 'string' ? value : value.name),
       map(name => name ? this._filter(name) : this.options.slice())
     );
 
     this.resultCg = 0;
+    this.cgRecette = 0;
 
       this.portion = {
         id: null,
@@ -52,20 +59,24 @@ export class RecetteComponent implements OnInit {
         fk_idaliment: null,
         fk_idrecette: null
       };
-
-      this.tableauPortion = [{
-        idAliment: 0,
-        nameAliment: '',
-        quantityPortion: 0,
-        cgPortion: 0
-      }];
-
       }
 
-  nbrAliments () {
+  stockPortion () {
 
+    this.resultCg =  ((this.selectedAliment.ig *
+      ((this.quantityPortion * this.selectedAliment.carb) / 100)) / 100);
+    this.cgRecette = this.cgRecette + this.resultCg;
     this.cptr = this.cptr + 1;
-    console.log('cptr = ' + this.cptr);
+
+    const tabPortion = {
+      idAliment: this.selectedAliment.id,
+      nameAliment: this.selectedAliment.name,
+      quantityPortion: this.quantityPortion,
+      cgPortion: this.resultCg
+    };
+
+    this.tableauPortion.push(tabPortion);
+
   }
 
   displayFn(aliment?: Aliment): string | undefined {

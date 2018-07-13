@@ -6,10 +6,12 @@
 <br>
 <button mat-icon-button>
   <mat-icon>
-    <a (click)="nbrAliments()">add</a>
+    <a (click)="stockPortion()">add</a>
   </mat-icon>
 </button>
 <br>
+<label> Total charge glycémique : {{cgRecette}}
+  </label>
 <br>
 <button>Enregistrer recette</button>
 <br>
@@ -19,29 +21,44 @@
 <mat-toolbar>
   <form>
     <mat-form-field>
-      <input type="text" placeholder="Saisir un aliment" aria-label="recetteAliment" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <input type="text" placeholder="Saisir un aliment" 
+          aria-label="recetteAliment" 
+          matInput [formControl]="myControl" 
+          [matAutocomplete]="auto"
+          [(ngModel)] = "selectedAliment"
+          name="nomAliment" >
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        <mat-option *ngFor="let option of filteredOptions | async" 
+        [value]="option">
           {{option.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
     <!-- formulaire de calcul de la charge glycémique, calories...-->
     <label> Grammes :
-      <input type="number" [(ngModel)]="quantityPortion" />
-    </label>
-    <label> Charge glycémique : {{resultCg}}
+      <input type="number" [(ngModel)]="quantityPortion" name="quantity"/>
     </label>
   </form>
 </mat-toolbar>
-
+<!-- 
 <ul>
-  <li *ngFor="let port of portion">
- {{tableauPortion.nameAliment}}
- {{tableauPortion.quantityPortion}}
- {{tableauPortion.cgPortion}}
+  <li *ngFor="let port of tableauPortion">
+ {{port.nameAliment}}
+ {{port.quantityPortion}}
+ {{port.cgPortion}}
   </li>
-</ul>
+</ul> -->
+
+<TABLE BORDER>
+    <TR>
+      <TH>Aliment</TH> <TH>Grammes</TH> <TH>Charge Glycémique</TH>
+    </TR>
+    <TR *ngFor="let port of tableauPortion">
+      <TD>{{port.nameAliment}}</TD> 
+      <TD>{{port.quantityPortion}}</TD> 
+      <TD>{{port.cgPortion}}</TD>
+    </TR>
+  </TABLE>
 
 
 <!-- <div [style.minHeight.vh]="100"  fxLayout="column">
