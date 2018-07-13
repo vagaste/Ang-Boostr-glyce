@@ -1,7 +1,7 @@
 export interface Portion {
-    id: number;
+    id?: number;
     quantity: number;
     fk_idaliment: number;
-    kf_idrecette: number;
+    fk_idrecette?: number;
 
 }

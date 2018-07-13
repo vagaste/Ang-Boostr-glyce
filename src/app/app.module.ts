@@ -34,8 +34,8 @@ import { AlimentsComponent } from './aliments/aliments.component';
 const routes: Routes = [
 
 // path = ' ' signifie que si on a du blanc dans l'url après la home page, le
-// routeur nous affiche la page bio par défaut
-// path = "**" : s'il y a n'importe quoi dans l'url, le routeur nous affiche la page bio
+// routeur nous affiche la page aliment par défaut
+// path = "**" : s'il y a n'importe quoi dans l'url, le routeur nous affiche la page aliment
 // L'ordre des chemins est important
 // patchMatch : il faut que ça corresponde exactement à ce qui est mis dans le path
 
