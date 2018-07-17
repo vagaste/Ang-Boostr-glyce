@@ -1,7 +1,9 @@
+import { Category } from './category';
+
 export interface Aliment {
     id: number;
     name: string;
-    category: string;
+    category: Category;
     energy: number;
     ig: number;
     protein: number;

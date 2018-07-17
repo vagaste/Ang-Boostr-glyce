@@ -29,6 +29,7 @@
     <i class="material-icons send">send</i>
   </button>
 </div>
+<!--fin form recherche-->
 
 <!-- formulaire de calcul de la charge glycémique, calories...-->
 <div class="form-calcul">
@@ -44,11 +45,11 @@
     </button>
   </label>
 </div>
+<!--fin form calcul-->
 
-
-<div class="mat-elevation-z8">
+<!--affichage par defaut, de tous les aliments; ou du resultat de recherche-->
+<div *ngIf="sortedAliments" class="mat-elevation-z8">
   <table fxFill mat-table [dataSource]="sortedAliments" matSort (matSortChange)="sortData($event)" class="">
-
     <!-- Aliment Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Aliment </th>
@@ -62,7 +63,7 @@
     <!-- Categorie Column -->
     <ng-container matColumnDef="category">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Categorie </th>
-      <td mat-cell *matCellDef="let aliment"> {{aliment.category}} </td>
+      <td mat-cell *matCellDef="let aliment"> {{aliment.category.name}} </td>
     </ng-container>
 
     <!-- Calories Column -->

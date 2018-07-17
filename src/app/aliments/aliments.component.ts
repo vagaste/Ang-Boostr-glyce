@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder,
          FormGroup } from '@angular/forms';
 import { AlimentService } from '../aliment.service';
@@ -17,8 +17,8 @@ export class AlimentsComponent implements OnInit {
   resultCg: number;
 
   displayedColumns = ['name', 'category', 'energy', 'ig', 'cg'];
-  listAliments = this.alimentService.searchedAliments;
-  sortedAliments = new MatTableDataSource < Aliment >(this.listAliments);
+  listAliments: Aliment[] = [];
+  sortedAliments;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
     // ici on injecte le service AlimentService : nom + type. L'injection permet de
@@ -32,10 +32,16 @@ export class AlimentsComponent implements OnInit {
       // l'objet aliment est alimenté avec l'objet aliment déclaré dans le service alimentService
       // this.sortedAliments.paginator = this.paginator;
 
+      this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
+        this.listAliments = listAliments;
+        this.sortedAliments = new MatTableDataSource < Aliment >(this.listAliments);
+      });
+
+
       this.alimentSelected = {
         id: 0,
         name: '',
-        category: '',
+        category: null,
         energy: 0,
         ig: 0,
         protein: 0,
@@ -52,10 +58,10 @@ export class AlimentsComponent implements OnInit {
     }
 
     sortData(sort: Sort) {
-      const data = this.alimentService.searchedAliments.slice();
+      const data = this.listAliments.slice();
       this.sortedAliments.paginator = this.paginator;
       if (!sort.active || sort.direction === '') {
-    return this.sortedAliments = data();
+    return this.sortedAliments = data;
       }
       return this.sortedAliments = data.sort((a, b) => {
           const isAsc = sort.direction === 'asc';

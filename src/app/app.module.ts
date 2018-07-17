@@ -30,6 +30,8 @@ import { MatTableModule } from '@angular/material/table';
 import { CdkTableModule } from '@angular/cdk/table';
 import { RecetteComponent } from './recette/recette.component';
 import { AlimentsComponent } from './aliments/aliments.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 const routes: Routes = [
 
@@ -82,7 +84,8 @@ const routes: Routes = [
     CdkTableModule,
     MatIconModule,
     RouterModule.forRoot(routes),
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    HttpClientModule
     ],
   exports: [
     MatMenuModule,

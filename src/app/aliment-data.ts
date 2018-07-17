@@ -1,7 +1,7 @@
-import { Aliment } from './aliment';
+/*import { Aliment } from './aliment';
 
 const ALIMENT_DATA: Aliment [] =
-    [
+     [
         {
             id: 1,
             name: 'Ananas',
@@ -88,5 +88,4 @@ const ALIMENT_DATA: Aliment [] =
         },
     ]
 ;
-
-export default ALIMENT_DATA;
+export default ALIMENT_DATA;*/
