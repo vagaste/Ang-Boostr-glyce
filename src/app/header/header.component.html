@@ -1,27 +1,58 @@
 <mat-toolbar class="mt-tb-head" fxLayout="row" fxLayoutAlign="space-around center">
-    <button class="bar-buttons" mat-button [matMenuTriggerFor]="menu">
-        <a href="#" class="bar-buttons-text">menu</a>
-    </button>
-    <button class="bar-buttons" mat-button >
-        <a href="/aliments" class="bar-buttons-text">aliments</a>
-      </button>
-    <button class="bar-buttons" mat-button [matMenuTriggerFor]="recettes">
-        <a href="#" class="bar-buttons-text">recettes</a>
-      </button>
-      <button class="bar-buttons" mat-button [matMenuTriggerFor]="repas">
-          <a href="#" class="bar-buttons-text">repas</a>
-      </button>
-      <mat-menu class="bar-buttons" #menu="matMenu">
+    <!-- ######################################################################## -->
+  <!-- These Lines are commented because of unavailable function for Version 1 -->
+
+  <!-- <button class="bar-buttons" mat-button [matMenuTriggerFor]="menu">
+    <a href="#" class="bar-buttons-text">menu</a>
+  </button> -->
+  <!-- ######################################################################## -->
+
+  <button class="bar-buttons" mat-button>
+    <a href="/aliments" class="bar-buttons-text">aliments</a>
+  </button>
+  <button class="bar-buttons" mat-button [matMenuTriggerFor]="recettes">
+    <a href="#" class="bar-buttons-text">recettes</a>
+  </button>
+
+  <!-- ######################################################################## -->
+  <!-- These Lines are commented because of unavailable function for Version 1 -->
+
+  <!--<button class="bar-buttons" mat-button [matMenuTriggerFor]="repas">
+    <a href="#" class="bar-buttons-text">repas</a>
+  </button> -->
+  <!-- ######################################################################## -->
+
+
+  <!-- ######################################################################## -->
+  <!-- These Lines are commented because of unavailable function for Version 1 -->
+
+  <!-- <mat-menu class="bar-buttons" #menu="matMenu">
           <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">connexion</a></button>
           <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">recommandations</a> ANSE</button>
         <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">contacts</a></button>
-      </mat-menu>
-      <mat-menu class="bar-buttons" #recettes="matMenu">
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">afficher</a></button>
-        <button  class="bar-buttons"  mat-menu-item><a href="/recette/create" class="bar-buttons-text-drop">créer</a></button>
-      </mat-menu>
-      <mat-menu class="bar-buttons" #repas="matMenu">
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">afficher</a></button>
-        <button  class="bar-buttons"  mat-menu-item><a href="#" class="bar-buttons-text-drop">créer</a></button>
-      </mat-menu>
+      </mat-menu> -->
+  <!-- ######################################################################## -->
+
+  <mat-menu class="bar-buttons" #recettes="matMenu">
+    <button class="bar-buttons" mat-menu-item>
+      <a href="#" class="bar-buttons-text-drop">afficher</a>
+    </button>
+    <button class="bar-buttons" mat-menu-item>
+      <a href="/recette/create" class="bar-buttons-text-drop">créer</a>
+    </button>
+  </mat-menu>
+
+  <!-- ######################################################################## -->
+  <!-- These Lines are commented because of unavailable function for Version 1 -->
+
+  <!-- <mat-menu class="bar-buttons" #repas="matMenu">
+    <button class="bar-buttons" mat-menu-item>
+      <a href="#" class="bar-buttons-text-drop">afficher</a>
+    </button>
+    <button class="bar-buttons" mat-menu-item>
+      <a href="#" class="bar-buttons-text-drop">créer</a>
+    </button>
+  </mat-menu> -->
+  <!-- ######################################################################## -->
+
 </mat-toolbar>
