@@ -34,7 +34,9 @@ export class RecetteComponent implements OnInit {
 // mettre un subscribe quand on communiquera avec le back + mettre l'url du
 // back dans le service
 
-    this.options = this.alimentService.searchedAliments;
+    this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
+    this.options = listAliments;
+    });
     this.recette = this.recetteService;
     this.cptr = 0;
     this.quantityPortion = 0;
