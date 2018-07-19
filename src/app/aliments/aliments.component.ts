@@ -4,6 +4,7 @@ import { FormBuilder,
 import { AlimentService } from '../aliment.service';
 import { Aliment } from '../aliment';
 import { Sort, MatPaginator, MatTableDataSource} from '@angular/material';
+import { forEach } from '../../../node_modules/@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-aliments',
@@ -67,7 +68,7 @@ export class AlimentsComponent implements OnInit {
           const isAsc = sort.direction === 'asc';
           switch (sort.active) {
             case 'name': return compare(a.name, b.name, isAsc);
-            case 'category': return compare(a.category, b.category, isAsc);
+            case 'category': return compare(a.category.name, b.category.name, isAsc);
             case 'energy': return comparenum(a.energy, b.energy, isAsc);
             case 'ig': return comparenum(a.ig, b.ig, isAsc);
             case 'cg': return comparenum(a.cg, b.cg, isAsc);
