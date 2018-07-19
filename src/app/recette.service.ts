@@ -8,15 +8,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RecetteService {
 
-  constructor() { }
-
-  // constructor(private http: HttpClient) { }
-
   // ici on met l'url du back (cf postman)
-  // API_URL = 'https://bnppf1-bookmarks.herokuapp.com/author/';
+  API_URL = 'http://localhost:8090';
+  constructor(private http: HttpClient) { }
 
-//  createRecette(recette: Recette): Observable<Recette> {
-//    return this.http.post<Recette>(this.API_URL, recette);
-//    }
+
+  getAll(): Observable<Recette[]> {
+    return this.http.get<Recette[]> (this.API_URL + '/mes-recettes');
+  }
+
+  createRecette(recette: Recette): Observable<Recette> {
+    return this.http.post<Recette>(this.API_URL + '/mes-recettes/save', recette);
+    }
 
 }
