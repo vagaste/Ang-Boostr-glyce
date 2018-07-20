@@ -17,8 +17,12 @@
     color: rgb(255, 49, 76);
   }
 
-  .btnDetail{
+  .cursorPointer{
     cursor: pointer;
   }
 
+th{
+  font-weight: bold;
+  color: green;
+}
   

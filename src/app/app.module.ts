@@ -33,6 +33,7 @@ import { RecetteComponent } from './recette/recette.component';
 import { AlimentsComponent } from './aliments/aliments.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ListRecettesComponent } from './list-recettes/list-recettes.component';
+import { RecetteDetailComponent } from './recette-detail/recette-detail.component';
 
 
 const routes: Routes = [
@@ -74,7 +75,8 @@ const routes: Routes = [
     FooterComponent,
     RecetteComponent,
     AlimentsComponent,
-    ListRecettesComponent
+    ListRecettesComponent,
+    RecetteDetailComponent
   ],
   imports: [
     BrowserModule,

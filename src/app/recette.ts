@@ -1,3 +1,5 @@
+import { Portion } from 'src/app/portion';
+
 export interface Recette {
     id: number;
     name: string;
@@ -10,4 +12,5 @@ export interface Recette {
     fibre: number;
     sugar: number;
     salt: number;
+    portions: Portion[];
 }

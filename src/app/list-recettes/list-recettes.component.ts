@@ -16,11 +16,13 @@ selectedRecette: Recette;
   ngOnInit() {
     this.recetteService.getAll().subscribe((listRecette: Recette[]) => {
       this.listRecette =  listRecette;
+      if (this.listRecette && this.listRecette.length > 0) {
+        this.selectedRecette = this.listRecette[0];
+      }
     });
   }
 
-  selectRecette(selectedRecette: Recette, e) {
-    e.preventDefault();
+  selectRecette(selectedRecette: Recette) {
     this.selectedRecette = selectedRecette ;
   }
 

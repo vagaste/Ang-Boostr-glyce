@@ -1,6 +1,11 @@
-<h2>Mes recettes</h2>
-<mat-list *ngIf="listRecette">
-  <mat-list-item *ngFor="let recette of listRecette">
-    <div matLine (click)= "selectRecette(recette)" routerLink="/recette/{{ recette.id }}">{{ recette.name }}</div>
-  </mat-list-item>
-</mat-list>
+<div fxLayout="row" fxLayoutAlign="space-around start" >
+  <div>
+    <h2>Mes recettes</h2>
+    <mat-list *ngIf="listRecette">
+      <mat-list-item *ngFor="let recette of listRecette">
+        <div matLine (click)="selectRecette(recette)">{{ recette.name }}</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+  <app-recette-detail [recette]="selectedRecette"></app-recette-detail>
+</div>

@@ -53,9 +53,9 @@
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Aliment </th>
       <td mat-cell *matCellDef="let aliment">
-        <mat-icon id="btnDetailOn_{{aliment.id}}" class="btnDetail" style="display:initial;" (click)="displayDetailsAliment(aliment.id)">expand_more</mat-icon>
-        <mat-icon id="btnDetailOff_{{aliment.id}}" class="btnDetail" style="display:none;" (click)="closeDetailsAliment(aliment.id)">expand_less</mat-icon>
-        <a (click)="selectAliment(aliment, $event)">
+        <mat-icon id="btnDetailOn_{{aliment.id}}" class="cursorPointer" style="display:initial;" (click)="displayDetailsAliment(aliment.id)">expand_more</mat-icon>
+        <mat-icon id="btnDetailOff_{{aliment.id}}" class="cursorPointer" style="display:none;" (click)="closeDetailsAliment(aliment.id)">expand_less</mat-icon>
+        <a class="cursorPointer" (click)="selectAliment(aliment, $event)">
           {{aliment.name}}
         </a>
         <br>
