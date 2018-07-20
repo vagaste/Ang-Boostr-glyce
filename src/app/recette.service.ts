@@ -14,11 +14,11 @@ export class RecetteService {
 
 
   getAll(): Observable<Recette[]> {
-    return this.http.get<Recette[]> (this.API_URL + '/mes-recettes');
+    return this.http.get<Recette[]> (this.API_URL + '/recettes');
   }
 
   createRecette(recette: Recette): Observable<Recette> {
-    return this.http.post<Recette>(this.API_URL + '/mes-recettes/save', recette);
+    return this.http.post<Recette>(this.API_URL + '/recettes/save', recette);
     }
 
 }

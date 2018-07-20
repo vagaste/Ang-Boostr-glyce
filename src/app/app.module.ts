@@ -6,7 +6,8 @@ import { MatMenuModule,
          MatOptionModule,
          MatSelectModule,
          MatIconModule,
-         MatAutocompleteModule
+         MatAutocompleteModule,
+         MatListModule
         } from '@angular/material';
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
@@ -31,6 +32,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { RecetteComponent } from './recette/recette.component';
 import { AlimentsComponent } from './aliments/aliments.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ListRecettesComponent } from './list-recettes/list-recettes.component';
 
 
 const routes: Routes = [
@@ -42,15 +44,26 @@ const routes: Routes = [
 // patchMatch : il faut que ça corresponde exactement à ce qui est mis dans le path
 
   { path: '', redirectTo: '/aliments', pathMatch: 'full' },
+
   {
    path: 'aliments',
     component: AlimentsComponent},
+
+  {
+    path: 'recette/liste',
+    component: ListRecettesComponent},
+
   {
     path: 'recette/create',
     component: RecetteComponent},
+
+  /* {
+    path: 'recette/:id',
+    component: RecetteComponent}, */
+
   {
-      path: '**',
-      component: AlimentsComponent}
+    path: '**',
+    component: AlimentsComponent}
    ] ;
 
 @NgModule({
@@ -60,12 +73,14 @@ const routes: Routes = [
     BodyComponent,
     FooterComponent,
     RecetteComponent,
-    AlimentsComponent
+    AlimentsComponent,
+    ListRecettesComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatMenuModule,
+    MatListModule,
     MatToolbarModule,
     MatInputModule,
     MatFormFieldModule,

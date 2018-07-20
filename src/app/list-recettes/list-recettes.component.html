@@ -1,0 +1,6 @@
+<h2>Mes recettes</h2>
+<mat-list *ngIf="listRecette">
+  <mat-list-item *ngFor="let recette of listRecette">
+    <div matLine (click)= "selectRecette(recette)" routerLink="/recette/{{ recette.id }}">{{ recette.name }}</div>
+  </mat-list-item>
+</mat-list>

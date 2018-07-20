@@ -54,9 +54,28 @@
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Aliment </th>
       <td mat-cell *matCellDef="let aliment">
-        <a (click)="selectAliment(aliment, $event)" href="">
+        <mat-icon id="btnDetailOn_{{aliment.id}}" class="btnDetail" style="display:initial;" (click)="displayDetailsAliment(aliment.id)">expand_more</mat-icon>
+        <mat-icon id="btnDetailOff_{{aliment.id}}" class="btnDetail" style="display:none;" (click)="closeDetailsAliment(aliment.id)">expand_less</mat-icon>
+        <a (click)="selectAliment(aliment, $event)">
           {{aliment.name}}
         </a>
+        <br>
+        <div></div>
+        <br>
+        <div id="divDetail_{{aliment.id}}" style="display:none;">
+          <th>Proteines: </th>
+          <td>{{aliment.protein}} g,</td>&nbsp;
+          <th>Glucides: </th>
+          <td>{{aliment.carb}} g dont</td>
+          <th>Sucres: </th>
+          <td>{{aliment.sugar}} g,</td>&nbsp;
+          <th>Lipides: </th>
+          <td>{{aliment.lipid}} g,</td>&nbsp;
+          <th>Fibres: </th>
+          <td>{{aliment.fibre}} g,</td>&nbsp;
+          <th>Sel: </th>
+          <td>{{aliment.salt}} g,</td>
+        </div>
       </td>
     </ng-container>
 

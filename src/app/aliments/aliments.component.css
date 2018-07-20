@@ -16,3 +16,9 @@
 .send{
     color: rgb(255, 49, 76);
   }
+
+  .btnDetail{
+    cursor: pointer;
+  }
+
+  
