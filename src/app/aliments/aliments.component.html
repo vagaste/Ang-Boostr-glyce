@@ -37,12 +37,11 @@
     <input type="texte" [(ngModel)]="alimentSelected.name" />
   </label>
   <label> Grammes :
-    <input type="number" [(ngModel)]="quantityAliment" />
+    <input type="number" [(ngModel)]="quantityAliment" (input)="calculCg()" />
   </label>
-  <label> Charge glycémique : {{resultCg}}
-    <button>
-      <a (click)="calculCg(alimentSelected, quantityAliment)">Calculer</a>
-    </button>
+
+  <!-- formate le nombre avec 1 chiffre avant la decimale et 2 après -->
+  <label> Charge glycémique : {{resultCg | number:'1.0-2'}}
   </label>
 </div>
 <!--fin form calcul-->

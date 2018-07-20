@@ -84,17 +84,20 @@ export class AlimentsComponent implements OnInit {
     }
   }
 
-  selectAliment(aliment: Aliment, e) {
+
+  // A la seclection d'un aliment, le calcul de la CG se fait automatiquement avec une portion de 100g
+  selectAliment(aliment, e) {
     e.preventDefault();
     this.alimentSelected = aliment;
-
+    this.quantityAliment = 100; // Modifier la quantité initiale ici
+    this.calculCg();
   }
 
-  calculCg(alimentSelected, quantity) {
-    if (alimentSelected.ig === '') {
-      this.resultCg = 0;
+  // explication calcul CG :
+  public calculCg() {
+    if (this.alimentSelected) { // Si il n'y a pas d'aliment séléctionné, pas de calcul de résultat
+      this.resultCg = ((this.alimentSelected.ig * ((this.quantityAliment * this.alimentSelected.carb) / 100)) / 100);
     }
-    this.resultCg = ((alimentSelected.ig * ((quantity * alimentSelected.carb) / 100)) / 100);
   }
 
 // methodes qui permet d afficher ou cacher une div contenant le detail de l aliment, selon un clic bouton
@@ -102,7 +105,8 @@ export class AlimentsComponent implements OnInit {
     document.getElementById('btnDetailOn_' + alimentId).style.display = 'none';
     document.getElementById('btnDetailOff_' + alimentId).style.display = 'initial';
     document.getElementById('divDetail_' + alimentId).style.display = 'initial';
-  }
+}
+
 
   closeDetailsAliment(alimentId: number) {
     document.getElementById('btnDetailOn_' + alimentId).style.display = 'initial';
