@@ -78,24 +78,24 @@ export class AlimentsComponent implements OnInit {
       }
     });
   }
+  // A la seclection d'un aliment, le calcul de la CG se fait automatiquement avec une portion de 100g
   selectAliment(aliment, e) {
     e.preventDefault();
     this.alimentSelected = aliment;
-    this.quantityAliment = 100;
+    this.quantityAliment = 100; // Modifier la quantité initiale ici
     this.calculCg();
   }
 
+  // explication calcul CG :
   public calculCg() {
-    if (this.alimentSelected) {
-    this.resultCg = ((this.alimentSelected.ig * ((this.quantityAliment * this.alimentSelected.carb) / 100)) / 100);
-  console.log('calculCg', this.resultCg);
+    if (this.alimentSelected) { // Si il n'y a pas d'aliment séléctionné, pas de calcul de résultat
+      this.resultCg = ((this.alimentSelected.ig * ((this.quantityAliment * this.alimentSelected.carb) / 100)) / 100);
+    }
   }
 }
+  function comparenum(a, b, isAsc) {
+    return (parseFloat(a) < parseFloat(b) ? -1 : 1) * (isAsc ? 1 : -1);
   }
-
-function comparenum(a, b, isAsc) {
-  return (parseFloat(a) < parseFloat(b) ? -1 : 1) * (isAsc ? 1 : -1);
-}
-function compare(a, b, isAsc) {
-  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}
+  function compare(a, b, isAsc) {
+    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  }
