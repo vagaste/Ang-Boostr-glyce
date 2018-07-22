@@ -1,7 +1,8 @@
 <h2>
   Créez votre propre recette !
 </h2>
-<input matInput name="recette" placeholder="Nom de la recette" />
+<input matInput name="recette" placeholder="Nom de la recette" 
+[(ngModel)]="recette.name"/>
 <br>
 <br>
 <button mat-icon-button>
@@ -13,7 +14,10 @@
 <label> Total charge glycémique : {{cgRecette}}
   </label>
 <br>
-<button>Enregistrer recette</button>
+<!-- <button>Enregistrer recette</button> -->
+<button>
+    <a (click)="create()">Enregistrer recette</a>
+</button>
 <br>
 <br>
 
