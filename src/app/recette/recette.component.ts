@@ -36,10 +36,6 @@ export class RecetteComponent implements OnInit {
 
     this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
     this.options = listAliments;
-    });
-    this.recette = this.recetteService;
-    this.cptr = 0;
-    this.quantityPortion = 0;
     this.filteredOptions = this.myControl.valueChanges
     .pipe(
       startWith<string | Aliment>(''),
@@ -52,6 +48,10 @@ export class RecetteComponent implements OnInit {
       map(name => name ? this._filter(name) : this.options.slice())
     );
 
+    });
+    this.recette = this.recetteService;
+    this.cptr = 0;
+    this.quantityPortion = 0;
     this.resultCg = 0;
     this.cgRecette = 0;
 

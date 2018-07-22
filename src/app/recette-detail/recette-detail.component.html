@@ -1,0 +1,12 @@
+<h2>Detail de ma recette</h2>
+<p>
+  titre: <span>{{recette.name}}</span>
+  <br>
+ comment: <span>{{recette.comment}}</span>
+ <br>
+ <mat-list *ngIf="recette">
+    <mat-list-item *ngFor="let portion of recette.portions">
+      <div matLine>{{portion.aliment.name}}, {{portion.quantity}}</div>
+    </mat-list-item>
+  </mat-list>
+</p>

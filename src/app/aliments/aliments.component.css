@@ -16,3 +16,13 @@
 .send{
     color: rgb(255, 49, 76);
   }
+
+  .cursorPointer{
+    cursor: pointer;
+  }
+
+th{
+  font-weight: bold;
+  color: green;
+}
+  

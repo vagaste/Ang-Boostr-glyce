@@ -8,12 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class AlimentService {
   // searchedAliments;
+  API_URL = 'http://localhost:8090';
 
   constructor(private http: HttpClient) {
     // this.searchedAliments = ALIMENT_DATA;
   }
 
+
   getAll(): Observable<Aliment[]> {
-    return this.http.get<Aliment[]> ('http://localhost:8090/aliment');
+    return this.http.get<Aliment[]> ( this.API_URL + '/aliment');
   }
 }
