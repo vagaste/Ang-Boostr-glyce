@@ -59,7 +59,8 @@ export class RecetteComponent implements OnInit {
 
     this.recette = {
       name: '',
-      cg: 0
+      cg: 0,
+      portions: null
     };
 
     this.portion = {
