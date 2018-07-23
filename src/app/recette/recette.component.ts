@@ -96,14 +96,26 @@ export class RecetteComponent implements OnInit {
     console.log('recette NAME = ' + this.recette.name);
 
     for (const tabPortion of this.tableauPortion) {
-      this.recette.portions = tabPortion;
-      console.log(tabPortion);
+      // this.recette.portions = [tabPortion.quantity, tabPortion.fk_idaliment];
+
+      // this.portion = {
+      //   quantity = tabPortion[3],
+      //   fk_idaliment= tabPortion[1]
+      // };
+      // this.recette.portions[] = this.portion;
+      console.log('portion = ' + this.portion) ;
+      console.log('this recette.portions = ' + this.recette.portions) ;
+
     }
     this.recetteService.createRecette(this.recette)
       .subscribe((recette: Recette) => {
         this.recette = recette;
       });
 
+  }
+
+  private newMethod() {
+    return this;
   }
 
   displayFn(aliment?: Aliment): string | undefined {

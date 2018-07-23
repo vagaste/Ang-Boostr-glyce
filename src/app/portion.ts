@@ -4,7 +4,6 @@ import { Recette } from './recette';
 export interface Portion {
     id?: number;
     quantity: number;
-    aliment: Aliment;
-    recette: Recette;
-
+    fk_idaliment: number;
+    fk_idrecette?: number;
 }
