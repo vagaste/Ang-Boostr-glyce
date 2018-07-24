@@ -35,24 +35,10 @@ export class RecetteComponent implements OnInit {
     // ici on alimente option avec l'aliment service pour l'autocomplete
     // mettre un subscribe quand on communiquera avec le back + mettre l'url du
     // back dans le service
+    this.prepareAlimentList();
 
-    this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
-      this.options = listAliments;
-      this.filteredOptions = this.myControl.valueChanges
-        .pipe(
-          startWith<string | Aliment>(''),
-          tap(value => {
-            if (typeof value !== 'string') {
-              this.selectedAliment = value;
-            }
-          }),
-          map(value => typeof value === 'string' ? value : value.name),
-          map(name => name ? this._filter(name) : this.options.slice())
-        );
-
-    });
     this.cptr = 0;
-    this.quantityPortion = 0;
+    //this.quantityPortion = 0;
     this.resultCg = 0;
     this.cgRecette = 0;
 
@@ -85,6 +71,7 @@ export class RecetteComponent implements OnInit {
 
     this.tableauPortion.push(tabPortion);
 
+
   // on sauvegarde l'aliment et la portion
     const portionToAdd = {
       quantity: 0,
@@ -97,7 +84,15 @@ export class RecetteComponent implements OnInit {
     console.log('portion : ');
     console.log(portionToAdd);
     this.recette.portions.push(portionToAdd);
+    this.displayFn();
+    this.quantityPortion = null;
+    this.selectedAliment.name = "";
+
+    this.prepareAlimentList();
+    
     console.log('quit stockPortion');
+   
+
   }
 
   create() {
@@ -115,6 +110,27 @@ export class RecetteComponent implements OnInit {
       });
 
   }
+
+  prepareAlimentList(){
+  this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
+    this.options = listAliments;
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith<string | Aliment>(''),
+        tap(value => {
+          if (typeof value !== 'string') {
+            this.selectedAliment = value;
+          }
+        }),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.options.slice())
+      );
+
+  });
+}
+
+
+
 
   private newMethod() {
     return this;

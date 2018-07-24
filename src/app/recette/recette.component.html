@@ -10,7 +10,7 @@
   </mat-form-field>
 
   <!-- autocomplete -->
-  <mat-toolbar fxLayout="row" fxLayoutAlign="space-around center">
+  <mat-toolbar fxLayout="row" fxLayoutAlign="center center">
     <mat-form-field>
       <input type="text" placeholder="Saisir un aliment" aria-label="recetteAliment" matInput [formControl]="myControl" [matAutocomplete]="auto"
         [(ngModel)]="selectedAliment" name="nomAliment">
@@ -22,7 +22,7 @@
     </mat-form-field>
     <!-- formulaire de calcul de la charge glycémique, calories...-->
     
-      <input type="number" placeholder="Son poids en grammes" [(ngModel)]="quantityPortion" name="quantity" />
+      <input class="poids" type="number" placeholder="Portion en g" [(ngModel)]="quantityPortion" name="quantity" />
     
     <button mat-icon-button>
         <mat-icon>
