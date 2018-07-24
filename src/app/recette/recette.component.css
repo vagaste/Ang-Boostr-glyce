@@ -21,3 +21,8 @@ mat-toolbar{
     padding-right: 2%;  
     background-color: rgba(211, 211, 211, 0.2)
 }
+mat-grid-tile {
+    background: rgb(205, 230, 204);
+    padding: 2px;
+    
+  }
