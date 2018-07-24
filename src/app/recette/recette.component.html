@@ -1,49 +1,68 @@
-<h2>
-  Créez votre propre recette !
-</h2>
-<input matInput name="recette" placeholder="Nom de la recette" 
-[(ngModel)]="recette.name"/>
-<br>
-<br>
-<button mat-icon-button>
-  <mat-icon>
-    <a (click)="stockPortion()">add</a>
-  </mat-icon>
-</button>
-<br>
-<label> Total charge glycémique : {{cgRecette}}
-  </label>
-<br>
-<!-- <button>Enregistrer recette</button> -->
-<button>
-    <a (click)="create()">Enregistrer recette</a>
-</button>
-<br>
-<br>
+<div class="titre-milieu">
+  <h2>Créez votre propre recette !</h2>
+</div>
 
-<!-- autocomplete -->
-<mat-toolbar>
-  <form>
+<div>
+  <mat-form-field class="recette-nom" appearance="outline">
+    <mat-label>recette</mat-label>
+    <input matInput placeholder="Nom de la recette" [(ngModel)]="recette.name">
+    <mat-icon matSuffix>edit</mat-icon>
+  </mat-form-field>
+
+  <!-- autocomplete -->
+  <mat-toolbar fxLayout="row" fxLayoutAlign="space-around center">
     <mat-form-field>
-      <input type="text" placeholder="Saisir un aliment" 
-          aria-label="recetteAliment" 
-          matInput [formControl]="myControl" 
-          [matAutocomplete]="auto"
-          [(ngModel)] = "selectedAliment"
-          name="nomAliment" >
+      <input type="text" placeholder="Saisir un aliment" aria-label="recetteAliment" matInput [formControl]="myControl" [matAutocomplete]="auto"
+        [(ngModel)]="selectedAliment" name="nomAliment">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" 
-        [value]="option">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
           {{option.name}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
     <!-- formulaire de calcul de la charge glycémique, calories...-->
-    <label> Grammes :
-      <input type="number" [(ngModel)]="quantityPortion" name="quantity"/>
-    </label>
-  </form>
-</mat-toolbar>
+    
+      <input type="number" placeholder="Son poids en grammes" [(ngModel)]="quantityPortion" name="quantity" />
+    
+    <button mat-icon-button>
+        <mat-icon>
+          <a (click)="stockPortion()">add</a>
+        </mat-icon>
+      </button>
+
+  </mat-toolbar>
+
+  <mat-list role="list">
+      <mat-list-item role="listitem">Item 2</mat-list-item>
+      <mat-list-item role="listitem" *ngFor="let port of tableauPortion">{{port.nameAliment}} {{port.quantityPortion}} {{port.cgPortion}}</mat-list-item>
+      
+      <mat-list-item role="listitem">Item 3</mat-list-item>
+    </mat-list>
+
+
+  <TABLE BORDER>
+      <TR>
+        <TH>Aliment</TH>
+        <TH>Grammes</TH>
+        <TH>Charge Glycémique</TH>
+      </TR>
+      <TR *ngFor="let port of tableauPortion">
+        <TD>{{port.nameAliment}}</TD>
+        <TD>{{port.quantityPortion}}</TD>
+        <TD>{{port.cgPortion}}</TD>
+      </TR>
+    </TABLE>
+
+    <label> Total charge glycémique : {{cgRecette}}
+      </label>
+
+      <!-- <button>Enregistrer recette</button> -->
+      <button>
+          <a (click)="create()">Enregistrer recette</a>
+        </button>
+
+</div>
+
 <!-- 
 <ul>
   <li *ngFor="let port of tableauPortion">
@@ -53,16 +72,7 @@
   </li>
 </ul> -->
 
-<TABLE BORDER>
-    <TR>
-      <TH>Aliment</TH> <TH>Grammes</TH> <TH>Charge Glycémique</TH>
-    </TR>
-    <TR *ngFor="let port of tableauPortion">
-      <TD>{{port.nameAliment}}</TD> 
-      <TD>{{port.quantityPortion}}</TD> 
-      <TD>{{port.cgPortion}}</TD>
-    </TR>
-  </TABLE>
+
 
 
 <!-- <div [style.minHeight.vh]="100"  fxLayout="column">
