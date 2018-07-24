@@ -86,15 +86,22 @@ export class RecetteComponent implements OnInit {
     this.tableauPortion.push(tabPortion);
 
   // on sauvegarde l'aliment et la portion
-    this.portion.aliment = this.selectedAliment;
-    console.log('portion aliment = ' + this.portion.aliment);
-    this.portion.quantity = this.quantityPortion;
-    console.log('portion quantity = ' + this.portion.quantity);
-    console.log('portion = ' + this.portion);
-    this.recette.portions.push(this.portion);
+    const portionToAdd = {
+      quantity: 0,
+      aliment: null
+    };
+    portionToAdd.aliment = this.selectedAliment;
+    console.log('portion aliment = ' + portionToAdd.aliment.name);
+    portionToAdd.quantity = this.quantityPortion;
+    console.log('portion quantity = ' + portionToAdd.quantity);
+    console.log('portion : ');
+    console.log(portionToAdd);
+    this.recette.portions.push(portionToAdd);
+    console.log('quit stockPortion');
   }
 
   create() {
+    console.log('coucou');
 
     this.recette.cg = this.cgRecette;
     console.log('recette cg = ' + this.recette.cg);
