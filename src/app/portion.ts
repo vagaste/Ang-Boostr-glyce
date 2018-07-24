@@ -5,5 +5,5 @@ export interface Portion {
     id?: number;
     quantity: number;
     aliment: Aliment;
-    recette: Recette;
+    recette?: Recette;
 }

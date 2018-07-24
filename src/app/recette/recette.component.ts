@@ -7,6 +7,7 @@ import { AlimentService } from '../aliment.service';
 import { RecetteService } from '../recette.service';
 import { PortionService } from '../portion.service';
 import { Recette } from '../recette';
+import { Portion } from '../portion';
 
 @Component({
   selector: 'app-recette',
@@ -23,8 +24,7 @@ export class RecetteComponent implements OnInit {
   resultCg: number;
   cgRecette: number;
   recette: Recette;
-  // recette: RecetteService
-  portion: PortionService;
+  portion: Portion;
   tableauPortion = [];
   selectedAliment: Aliment;
 
@@ -51,7 +51,6 @@ export class RecetteComponent implements OnInit {
         );
 
     });
-    // this.recette = this.recetteService;
     this.cptr = 0;
     this.quantityPortion = 0;
     this.resultCg = 0;
@@ -60,24 +59,23 @@ export class RecetteComponent implements OnInit {
     this.recette = {
       name: '',
       cg: 0,
-      portions: null
+      portions: []
     };
 
     this.portion = {
-      id: null,
       quantity: 0,
-      fk_idaliment: null,
-      fk_idrecette: null
+      aliment: null
     };
   }
 
   stockPortion() {
-
+    console.log('méthode stockPortion');
     this.resultCg = ((this.selectedAliment.ig *
       ((this.quantityPortion * this.selectedAliment.carb) / 100)) / 100);
     this.cgRecette = this.cgRecette + this.resultCg;
     this.cptr = this.cptr + 1;
 
+    // on stocke les infos dans une liste pour les afficher à l'écran
     const tabPortion = {
       idAliment: this.selectedAliment.id,
       nameAliment: this.selectedAliment.name,
@@ -87,6 +85,13 @@ export class RecetteComponent implements OnInit {
 
     this.tableauPortion.push(tabPortion);
 
+  // on sauvegarde l'aliment et la portion
+    this.portion.aliment = this.selectedAliment;
+    console.log('portion aliment = ' + this.portion.aliment);
+    this.portion.quantity = this.quantityPortion;
+    console.log('portion quantity = ' + this.portion.quantity);
+    console.log('portion = ' + this.portion);
+    this.recette.portions.push(this.portion);
   }
 
   create() {
@@ -94,19 +99,9 @@ export class RecetteComponent implements OnInit {
     this.recette.cg = this.cgRecette;
     console.log('recette cg = ' + this.recette.cg);
     console.log('recette NAME = ' + this.recette.name);
+    console.log('portion = ' + this.portion) ;
+    console.log('this recette.portions = ' + this.recette.portions) ;
 
-    for (const tabPortion of this.tableauPortion) {
-      // this.recette.portions = [tabPortion.quantity, tabPortion.fk_idaliment];
-
-      // this.portion = {
-      //   quantity = tabPortion[3],
-      //   fk_idaliment= tabPortion[1]
-      // };
-      // this.recette.portions[] = this.portion;
-      console.log('portion = ' + this.portion) ;
-      console.log('this recette.portions = ' + this.recette.portions) ;
-
-    }
     this.recetteService.createRecette(this.recette)
       .subscribe((recette: Recette) => {
         this.recette = recette;
