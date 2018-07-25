@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -28,8 +29,9 @@ export class RecetteComponent implements OnInit {
   tableauPortion = [];
   selectedAliment: Aliment;
 
+
   constructor(public alimentService: AlimentService,
-    public recetteService: RecetteService, public portionService: PortionService) { }
+    public recetteService: RecetteService, public portionService: PortionService, public router: Router) { }
 
   ngOnInit() {
     // ici on alimente option avec l'aliment service pour l'autocomplete
@@ -86,12 +88,8 @@ export class RecetteComponent implements OnInit {
     this.recette.portions.push(portionToAdd);
     this.displayFn();
     this.quantityPortion = null;
-    this.selectedAliment.name = "";
-
     this.prepareAlimentList();
-    
     console.log('quit stockPortion');
-   
 
   }
 
@@ -107,11 +105,15 @@ export class RecetteComponent implements OnInit {
     this.recetteService.createRecette(this.recette)
       .subscribe((recette: Recette) => {
         this.recette = recette;
-      });
+        this.router.navigateByUrl('/recette/liste');
+      }, (err) => {
+        console.log('erreur !', err);
+      }
+      );
 
   }
 
-  prepareAlimentList(){
+  prepareAlimentList() {
   this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
     this.options = listAliments;
     this.filteredOptions = this.myControl.valueChanges
@@ -132,9 +134,6 @@ export class RecetteComponent implements OnInit {
 
 
 
-  private newMethod() {
-    return this;
-  }
 
   displayFn(aliment?: Aliment): string | undefined {
     return aliment ? aliment.name : undefined;
