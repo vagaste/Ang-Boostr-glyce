@@ -23,3 +23,6 @@ mat-toolbar{
     margin-right: 20px;
     width: 100px;
 }
+mat-grid-tile{
+    min-height: 15px;
+}

@@ -20,7 +20,7 @@ export class RecetteComponent implements OnInit {
   myControl = new FormControl();
   options: Aliment[];
   filteredOptions: Observable<Aliment[]>;
-  cptr: number;
+  //cptr: number;
   quantityPortion: number;
   resultCg: number;
   cgRecette: number;
@@ -39,8 +39,7 @@ export class RecetteComponent implements OnInit {
     // back dans le service
     this.prepareAlimentList();
 
-    this.cptr = 0;
-    //this.quantityPortion = 0;
+    //this.cptr = 0;
     this.resultCg = 0;
     this.cgRecette = 0;
 
@@ -61,7 +60,7 @@ export class RecetteComponent implements OnInit {
     this.resultCg = ((this.selectedAliment.ig *
       ((this.quantityPortion * this.selectedAliment.carb) / 100)) / 100);
     this.cgRecette = this.cgRecette + this.resultCg;
-    this.cptr = this.cptr + 1;
+    //this.cptr = this.cptr + 1;
 
     // on stocke les infos dans une liste pour les afficher à l'écran
     const tabPortion = {
@@ -74,7 +73,7 @@ export class RecetteComponent implements OnInit {
     this.tableauPortion.push(tabPortion);
 
 
-  // on sauvegarde l'aliment et la portion
+    // on sauvegarde l'aliment et la portion
     const portionToAdd = {
       quantity: 0,
       aliment: null
@@ -93,14 +92,21 @@ export class RecetteComponent implements OnInit {
 
   }
 
+  // Fonction de destockage de la portion affichée
+  // le bouton supprime la portion dans les tableaux à l'index de port of tableauPortion
+  destockPortion(portindex) {
+    this.recette.portions.splice(portindex, 1);
+    this.tableauPortion.splice(portindex, 1);
+  }
+
   create() {
     console.log('coucou');
 
     this.recette.cg = this.cgRecette;
     console.log('recette cg = ' + this.recette.cg);
     console.log('recette NAME = ' + this.recette.name);
-    console.log('portion = ' + this.portion) ;
-    console.log('this recette.portions = ' + this.recette.portions) ;
+    console.log('portion = ' + this.portion);
+    console.log('this recette.portions = ' + this.recette.portions);
 
     this.recetteService.createRecette(this.recette)
       .subscribe((recette: Recette) => {
@@ -114,22 +120,22 @@ export class RecetteComponent implements OnInit {
   }
 
   prepareAlimentList() {
-  this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
-    this.options = listAliments;
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith<string | Aliment>(''),
-        tap(value => {
-          if (typeof value !== 'string') {
-            this.selectedAliment = value;
-          }
-        }),
-        map(value => typeof value === 'string' ? value : value.name),
-        map(name => name ? this._filter(name) : this.options.slice())
-      );
+    this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
+      this.options = listAliments;
+      this.filteredOptions = this.myControl.valueChanges
+        .pipe(
+          startWith<string | Aliment>(''),
+          tap(value => {
+            if (typeof value !== 'string') {
+              this.selectedAliment = value;
+            }
+          }),
+          map(value => typeof value === 'string' ? value : value.name),
+          map(name => name ? this._filter(name) : this.options.slice())
+        );
 
-  });
-}
+    });
+  }
 
 
 

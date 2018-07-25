@@ -21,39 +21,51 @@
       </mat-autocomplete>
     </mat-form-field>
     <!-- formulaire de calcul de la charge glycémique, calories...-->
-    
-      <input class="poids" type="number" placeholder="Portion en g" [(ngModel)]="quantityPortion" name="quantity" />
-    
+
+    <input class="poids" type="number" placeholder="Portion en g" [(ngModel)]="quantityPortion" name="quantity" />
+
     <button mat-icon-button>
-        <mat-icon>
-          <a (click)="stockPortion()">add</a>
-        </mat-icon>
-      </button>
+      <mat-icon>
+        <a (click)="stockPortion()">add</a>
+      </mat-icon>
+    </button>
 
   </mat-toolbar>
-  <mat-grid-list cols="3" rowHeight="8:1">
-      <div>
-          <mat-grid-tile>Aliments</mat-grid-tile>
-          <mat-grid-tile>Quantité</mat-grid-tile>
-          <mat-grid-tile>Charge Glycémique</mat-grid-tile>
-      </div>
+  <mat-grid-list cols="4"> <!--rowHeight="8:1"-->
+    <div>
+      <mat-grid-tile>Aliments</mat-grid-tile>
+      <mat-grid-tile>Quantité</mat-grid-tile>
+      <mat-grid-tile>Charge Glycémique</mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+
+    </div>
     <div *ngFor="let port of tableauPortion">
-        <mat-grid-tile>{{port.nameAliment}}</mat-grid-tile>
-        <mat-grid-tile>{{port.quantityPortion}}</mat-grid-tile>
-        <mat-grid-tile>{{port.cgPortion | number:'1.0-2'}}</mat-grid-tile>
+      <mat-grid-tile>{{port.nameAliment}}</mat-grid-tile>
+      <mat-grid-tile>{{port.quantityPortion}}</mat-grid-tile>
+      <mat-grid-tile>{{port.cgPortion | number:'1.0-2'}}
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-icon-button>
+          <mat-icon>
+            <a (click)="destockPortion(tableauPortion.indexOf(port))">not_interested</a>
+          </mat-icon>
+        </button>
+      </mat-grid-tile>
     </div>
     <div>
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile>Total charge glycémique :</mat-grid-tile>
-        <mat-grid-tile>{{cgRecette | number:'1.0-2'}}</mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>Total charge glycémique :</mat-grid-tile>
+      <mat-grid-tile>{{cgRecette | number:'1.0-2'}}</mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
     </div>
-     
-    </mat-grid-list>
-  
-      <!-- <button>Enregistrer recette</button> -->
-      <button><mat-icon>save</mat-icon>
-          <a (click)="create()">Enregistrer recette</a>
-        </button>
+
+  </mat-grid-list>
+
+  <!-- <button>Enregistrer recette</button> -->
+  <button>
+    <mat-icon>
+    <a (click)="create()">save</a>
+  </mat-icon>
+  </button>
 
 </div>
-
