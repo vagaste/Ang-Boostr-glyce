@@ -1,0 +1,38 @@
+h4 {
+    border-bottom: 1.5px solid;
+    border-bottom-color: darkgreen;
+}
+
+h5 {
+    color: darkgreen;
+}
+
+mat-grid-tile {
+    font-size: 11px;
+    border: 1px solid darkgreen;
+}
+
+.nutritional-header {
+    background-color: darkgreen;
+    color: aliceblue;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.nutritional-bottom-hidden {
+    border-bottom: hidden;
+}
+
+.nutritional-top {
+    border-top: groove;
+    border-bottom: hidden;
+}
+
+.nutritional-footer-right {
+    border-bottom-right-radius: 5px;
+    border-top: 0em;
+}
+
+.nutritional-footer-left {
+    border-bottom-left-radius: 5px;
+    border-top: 0em;
+} 

@@ -1,12 +1,32 @@
-<h2>Detail de ma recette</h2>
-<p>
-  titre: <span>{{recette.name}}</span>
-  <br>
- comment: <span>{{recette.comment}}</span>
- <br>
- <mat-list *ngIf="recette">
-    <mat-list-item *ngFor="let portion of recette.portions">
-      <div matLine>{{portion.aliment.name}}, {{portion.quantity}}</div>
-    </mat-list-item>
+<div fxLayout="column" fxLayoutAlign="space-around start">
+  <h4>Détail de ma recette</h4>
+  <mat-list dense >
+    <mat-list-item *ngIf="recette">Nom: {{recette.name}}</mat-list-item>
+    <mat-list-item *ngIf="recette">Commentaires: {{recette.comment}}</mat-list-item>
   </mat-list>
-</p>
+  <h5>Mes ingrédients: </h5>
+  <mat-list dense *ngIf="recette">
+    <mat-list-item *ngFor="let portion of recette.portions">
+      {{portion.quantity}} g(ou cl) - {{portion.aliment.name}}
+    </mat-list-item>
+    <br>
+
+    <mat-grid-list fxFill cols="2" rowHeight="6:1">
+      <mat-grid-tile class="nutritional-header" [colspan]="2">Valeurs nutritionnelles pour la recette</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">Energie</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">{{recette.energy}} Kcal</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">Protéines</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">{{recette.protein}} g</mat-grid-tile>
+      <mat-grid-tile>Glucides</mat-grid-tile>
+      <mat-grid-tile>{{recette.carb}} g</mat-grid-tile>
+      <mat-grid-tile class="nutritional-top">dont sucres</mat-grid-tile>
+      <mat-grid-tile class="nutritional-top">{{recette.sugar}} g</mat-grid-tile>
+      <mat-grid-tile>Lipides:</mat-grid-tile>
+      <mat-grid-tile>{{recette.lipid}} g</mat-grid-tile>
+      <mat-grid-tile>Fibres:</mat-grid-tile>
+      <mat-grid-tile>{{recette.fibre}} g</mat-grid-tile>
+      <mat-grid-tile class="nutritional-footer-left">Sel: </mat-grid-tile>
+      <mat-grid-tile class="nutritional-footer-right">{{recette.salt}} g</mat-grid-tile>
+    </mat-grid-list>
+  </mat-list>
+</div>

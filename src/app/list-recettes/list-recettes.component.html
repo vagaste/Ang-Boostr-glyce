@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="space-around start" >
-  <div>
-    <h2>Mes recettes</h2>
-    <mat-list *ngIf="listRecette">
+  <div fxLayout="column" fxLayoutAlign="space-around start">
+    <h4>Mes recettes</h4>
+    <mat-list dense *ngIf="listRecette">
       <mat-list-item *ngFor="let recette of listRecette">
         <div matLine (click)="selectRecette(recette)">{{ recette.name }}</div>
       </mat-list-item>

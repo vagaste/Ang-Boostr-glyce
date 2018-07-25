@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Aliment } from './aliment';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlimentService {
   // searchedAliments;
-  API_URL = 'http://localhost:8090';
+  API_URL_ALIMENT = environment.urlBack + '/aliment';
 
   constructor(private http: HttpClient) {
     // this.searchedAliments = ALIMENT_DATA;
@@ -16,6 +17,6 @@ export class AlimentService {
 
 
   getAll(): Observable<Aliment[]> {
-    return this.http.get<Aliment[]> ( this.API_URL + '/aliment');
+    return this.http.get<Aliment[]> (this.API_URL_ALIMENT);
   }
 }
