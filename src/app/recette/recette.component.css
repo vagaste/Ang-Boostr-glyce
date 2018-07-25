@@ -26,3 +26,7 @@ mat-toolbar{
 mat-grid-tile{
     min-height: 15px;
 }
+
+.rouge {
+    color: rgb(219, 98, 98);
+}

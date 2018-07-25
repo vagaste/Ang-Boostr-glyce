@@ -20,7 +20,6 @@ export class RecetteComponent implements OnInit {
   myControl = new FormControl();
   options: Aliment[];
   filteredOptions: Observable<Aliment[]>;
-  //cptr: number;
   quantityPortion: number;
   resultCg: number;
   cgRecette: number;
@@ -39,7 +38,7 @@ export class RecetteComponent implements OnInit {
     // back dans le service
     this.prepareAlimentList();
 
-    //this.cptr = 0;
+
     this.resultCg = 0;
     this.cgRecette = 0;
 

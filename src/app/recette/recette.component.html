@@ -31,13 +31,12 @@
     </button>
 
   </mat-toolbar>
-  <mat-grid-list cols="4"> <!--rowHeight="8:1"-->
+  <mat-grid-list cols="4" rowHeight="8:1">
     <div>
       <mat-grid-tile>Aliments</mat-grid-tile>
       <mat-grid-tile>Quantité</mat-grid-tile>
       <mat-grid-tile>Charge Glycémique</mat-grid-tile>
       <mat-grid-tile></mat-grid-tile>
-
     </div>
     <div *ngFor="let port of tableauPortion">
       <mat-grid-tile>{{port.nameAliment}}</mat-grid-tile>
@@ -47,7 +46,7 @@
       <mat-grid-tile>
         <button mat-icon-button>
           <mat-icon>
-            <a (click)="destockPortion(tableauPortion.indexOf(port))">not_interested</a>
+            <a class="rouge" (click)="destockPortion(tableauPortion.indexOf(port))">delete_forever</a>
           </mat-icon>
         </button>
       </mat-grid-tile>
