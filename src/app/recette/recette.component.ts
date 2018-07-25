@@ -6,7 +6,6 @@ import { map, startWith, tap } from 'rxjs/operators';
 import { Aliment } from '../aliment';
 import { AlimentService } from '../aliment.service';
 import { RecetteService } from '../recette.service';
-import { PortionService } from '../portion.service';
 import { Recette } from '../recette';
 import { Portion } from '../portion';
 
@@ -30,15 +29,13 @@ export class RecetteComponent implements OnInit {
 
 
   constructor(public alimentService: AlimentService,
-    public recetteService: RecetteService, public portionService: PortionService, public router: Router) { }
+    public recetteService: RecetteService, public router: Router) { }
 
   ngOnInit() {
     // ici on alimente option avec l'aliment service pour l'autocomplete
     // mettre un subscribe quand on communiquera avec le back + mettre l'url du
     // back dans le service
     this.prepareAlimentList();
-
-
     this.resultCg = 0;
     this.cgRecette = 0;
 
@@ -54,12 +51,14 @@ export class RecetteComponent implements OnInit {
     };
   }
 
+
+  // methode de calcul de la CG d une recette à l ajout de la portion
   stockPortion() {
     console.log('méthode stockPortion');
+    // methode de calcul de la charge glycemique
     this.resultCg = ((this.selectedAliment.ig *
       ((this.quantityPortion * this.selectedAliment.carb) / 100)) / 100);
     this.cgRecette = this.cgRecette + this.resultCg;
-    //this.cptr = this.cptr + 1;
 
     // on stocke les infos dans une liste pour les afficher à l'écran
     const tabPortion = {
@@ -68,15 +67,14 @@ export class RecetteComponent implements OnInit {
       quantityPortion: this.quantityPortion,
       cgPortion: this.resultCg
     };
-
     this.tableauPortion.push(tabPortion);
-
 
     // on sauvegarde l'aliment et la portion
     const portionToAdd = {
       quantity: 0,
       aliment: null
     };
+
     portionToAdd.aliment = this.selectedAliment;
     console.log('portion aliment = ' + portionToAdd.aliment.name);
     portionToAdd.quantity = this.quantityPortion;
@@ -94,6 +92,7 @@ export class RecetteComponent implements OnInit {
   // Fonction de destockage de la portion affichée
   // le bouton supprime la portion dans les tableaux à l'index de port of tableauPortion
   destockPortion(portindex) {
+    this.cgRecette = this.cgRecette - this.tableauPortion[portindex].cgPortion;
     this.recette.portions.splice(portindex, 1);
     this.tableauPortion.splice(portindex, 1);
   }
