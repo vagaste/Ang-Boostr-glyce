@@ -5,7 +5,7 @@
 <div>
   <mat-form-field class="recette-nom" appearance="outline">
     <mat-label>Nom de ma recette</mat-label>
-    <input matInput [(ngModel)]="recette.name">
+    <input matInput title="saisir le nom de la recette" [(ngModel)]="recette.name">
     <mat-icon matSuffix>edit</mat-icon>
   </mat-form-field>
 
@@ -26,7 +26,8 @@
 
     <button mat-icon-button>
       <mat-icon>
-        <a (click)="stockPortion()">add</a>
+        <a (click)="stockPortion()" 
+        title="ajouter cet aliment">add</a>
       </mat-icon>
     </button>
 
@@ -48,7 +49,10 @@
       <mat-grid-tile>
         <button mat-icon-button>
           <mat-icon>
-            <a class="rouge" (click)="destockPortion(tableauPortion.indexOf(port))">delete_forever</a>
+            <a class="rouge" 
+            (click)="destockPortion(tableauPortion.indexOf(port))"
+            title="supprimer cet aliment">
+            delete_forever</a>
           </mat-icon>
         </button>
       </mat-grid-tile>
@@ -65,13 +69,12 @@
   <ng-template #messErr>
     <p class="messErr">Merci de saisir un nom ET au moins une portion pour enregistrer votre recette.</p>
   </ng-template>
-
   <!-- <button>Enregistrer recette</button> -->
   <div *ngIf="recette.name!= '' && recette.portions!=[]; else messErr">
-    <button>
-      <mat-icon>
-        <a (click)="create()">save</a>
-      </mat-icon>
-    </button>
-  </div>
+  <button>
+    <mat-icon>
+    <a (click)="create()" title="enregistrer la recette">save</a>
+  </mat-icon>
+  </button>
 </div>
+ 

@@ -26,6 +26,13 @@ export class RecetteComponent implements OnInit {
   portion: Portion;
   tableauPortion = [];
   selectedAliment: Aliment;
+  energyRecette: number;
+  proteinRecette: number;
+  carbRecette: number;
+  lipidRecette: number;
+  fibreRecette: number;
+  sugarRecette: number;
+  saltRecette: number;
 
 
   constructor(public alimentService: AlimentService,
@@ -37,11 +44,26 @@ export class RecetteComponent implements OnInit {
     // back dans le service
     this.prepareAlimentList();
     this.resultCg = 0;
-    this.cgRecette = 0;
+
+    // this.energyRecette = 0;
+    // this.proteinRecette = 0;
+    // this.carbRecette = 0;
+    // this.lipidRecette = 0;
+    // this.fibreRecette = 0;
+    // this.sugarRecette = 0;
+    // this.saltRecette = 0;
 
     this.recette = {
       name: '',
+      comment: '',
+      energy: 0,
       cg: 0,
+      protein: 0,
+      carb: 0,
+      lipid: 0,
+      fibre: 0,
+      sugar: 0,
+      salt: 0,
       portions: []
     };
 
@@ -51,21 +73,43 @@ export class RecetteComponent implements OnInit {
     };
   }
 
-
-  // methode de calcul de la CG d une recette à l ajout de la portion
   stockPortion() {
-    console.log('méthode stockPortion');
+
     // methode de calcul de la charge glycemique
     this.resultCg = ((this.selectedAliment.ig *
       ((this.quantityPortion * this.selectedAliment.carb) / 100)) / 100);
-    this.cgRecette = this.cgRecette + this.resultCg;
+    this.recette.cg = this.recette.cg + this.resultCg;
 
-    // on stocke les infos dans une liste pour les afficher à l'écran
+    // calcul et cumul des valeurs nutritionnelles pour la recette
+    this.recette.energy = this.recette.energy +
+      this.calculValNut(this.selectedAliment.energy, this.quantityPortion);
+    this.recette.protein = this.recette.protein +
+      this.calculValNut(this.selectedAliment.protein, this.quantityPortion);
+    this.recette.carb = this.recette.carb +
+      this.calculValNut(this.selectedAliment.carb, this.quantityPortion);
+    this.recette.lipid = this.recette.lipid +
+      this.calculValNut(this.selectedAliment.lipid, this.quantityPortion);
+    this.recette.fibre = this.recette.fibre +
+      this.calculValNut(this.selectedAliment.fibre, this.quantityPortion);
+    this.recette.sugar = this.recette.sugar +
+      this.calculValNut(this.selectedAliment.sugar, this.quantityPortion);
+    this.recette.salt = this.recette.salt +
+      this.calculValNut(this.selectedAliment.salt, this.quantityPortion);
+
+    // on stocke les infos portion dans une liste pour les afficher à l'écran
+    // ainsi que les calculs par portion
     const tabPortion = {
       idAliment: this.selectedAliment.id,
       nameAliment: this.selectedAliment.name,
       quantityPortion: this.quantityPortion,
-      cgPortion: this.resultCg
+      cgPortion: this.resultCg,
+      energyPortion: this.calculValNut(this.selectedAliment.energy, this.quantityPortion),
+      proteinPortion: this.calculValNut(this.selectedAliment.protein, this.quantityPortion),
+      carbPortion: this.calculValNut(this.selectedAliment.carb, this.quantityPortion),
+      lipidPortion: this.calculValNut(this.selectedAliment.lipid, this.quantityPortion),
+      fibrePortion: this.calculValNut(this.selectedAliment.fibre, this.quantityPortion),
+      sugarPortion: this.calculValNut(this.selectedAliment.sugar, this.quantityPortion),
+      saltPortion: this.calculValNut(this.selectedAliment.salt, this.quantityPortion)
     };
     this.tableauPortion.push(tabPortion);
 
@@ -76,35 +120,35 @@ export class RecetteComponent implements OnInit {
     };
 
     portionToAdd.aliment = this.selectedAliment;
-    console.log('portion aliment = ' + portionToAdd.aliment.name);
     portionToAdd.quantity = this.quantityPortion;
-    console.log('portion quantity = ' + portionToAdd.quantity);
-    console.log('portion : ');
-    console.log(portionToAdd);
+
     this.recette.portions.push(portionToAdd);
     this.displayFn();
     this.quantityPortion = null;
     this.prepareAlimentList();
-    console.log('quit stockPortion');
 
   }
 
   // Fonction de destockage de la portion affichée
   // le bouton supprime la portion dans les tableaux à l'index de port of tableauPortion
+  // et supprime également la portion dans la recette.
+  // Les cumuls de la CG et des valeurs nutritionnelles sont recalculés
   destockPortion(portindex) {
-    this.cgRecette = this.cgRecette - this.tableauPortion[portindex].cgPortion;
+    this.recette.cg = this.recette.cg - this.tableauPortion[portindex].cgPortion;
+    this.recette.energy = this.recette.energy - this.tableauPortion[portindex].energyPortion;
+    this.recette.protein = this.recette.protein - this.tableauPortion[portindex].proteinPortion;
+    this.recette.carb = this.recette.carb - this.tableauPortion[portindex].carbPortion;
+    this.recette.lipid = this.recette.lipid - this.tableauPortion[portindex].lipidPortion;
+    this.recette.fibre = this.recette.fibre - this.tableauPortion[portindex].fibrePortion;
+    this.recette.sugar = this.recette.sugar - this.tableauPortion[portindex].sugarPortion;
+    this.recette.salt = this.recette.salt - this.tableauPortion[portindex].saltPortion;
+
     this.recette.portions.splice(portindex, 1);
     this.tableauPortion.splice(portindex, 1);
+
   }
 
   create() {
-    console.log('coucou');
-
-    this.recette.cg = this.cgRecette;
-    console.log('recette cg = ' + this.recette.cg);
-    console.log('recette NAME = ' + this.recette.name);
-    console.log('portion = ' + this.portion);
-    console.log('this recette.portions = ' + this.recette.portions);
 
     this.recetteService.createRecette(this.recette)
       .subscribe((recette: Recette) => {
@@ -135,10 +179,6 @@ export class RecetteComponent implements OnInit {
     });
   }
 
-
-
-
-
   displayFn(aliment?: Aliment): string | undefined {
     return aliment ? aliment.name : undefined;
   }
@@ -146,5 +186,9 @@ export class RecetteComponent implements OnInit {
     const filterValue = name.toLowerCase();
 
     return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
+  }
+
+  calculValNut(valeur, qty) {
+    return ((valeur / 100) * qty);
   }
 }
