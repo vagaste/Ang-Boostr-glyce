@@ -65,7 +65,15 @@
     </div>
 
   </mat-grid-list>
-
+<br>
+  <mat-form-field class="recette-com" appearance="outline">
+    <mat-label>commentaire</mat-label>
+    <input matInput placeholder="Commentaire" 
+    title="saisir un commentaire sur la recette"
+    [(ngModel)]="recette.comment">
+    <mat-icon matSuffix>edit</mat-icon>
+  </mat-form-field>
+<br>
   <!-- <button>Enregistrer recette</button> -->
   <button>
     <mat-icon>
