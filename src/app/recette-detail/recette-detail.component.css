@@ -36,3 +36,6 @@ mat-grid-tile {
     border-bottom-left-radius: 5px;
     border-top: 0em;
 } 
+.limit-largeur{
+    max-width: 200px;
+}
