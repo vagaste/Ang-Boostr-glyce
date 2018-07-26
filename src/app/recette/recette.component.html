@@ -4,8 +4,8 @@
 
 <div>
   <mat-form-field class="recette-nom" appearance="outline">
-    <mat-label>recette</mat-label>
-    <input matInput placeholder="Nom de la recette" [(ngModel)]="recette.name">
+    <mat-label>Nom de ma recette</mat-label>
+    <input matInput [(ngModel)]="recette.name">
     <mat-icon matSuffix>edit</mat-icon>
   </mat-form-field>
 
@@ -31,6 +31,8 @@
     </button>
 
   </mat-toolbar>
+
+<div>
   <mat-grid-list cols="4" rowHeight="8:1">
     <div>
       <mat-grid-tile>Aliments</mat-grid-tile>
@@ -57,14 +59,19 @@
       <mat-grid-tile>{{cgRecette | number:'1.0-2'}}</mat-grid-tile>
       <mat-grid-tile></mat-grid-tile>
     </div>
-
   </mat-grid-list>
+</div>
+
+  <ng-template #messErr>
+    <p class="messErr">Merci de saisir un nom ET au moins une portion pour enregistrer votre recette.</p>
+  </ng-template>
 
   <!-- <button>Enregistrer recette</button> -->
-  <button>
-    <mat-icon>
-    <a (click)="create()">save</a>
-  </mat-icon>
-  </button>
-
+  <div *ngIf="recette.name!= '' && recette.portions!=[]; else messErr">
+    <button>
+      <mat-icon>
+        <a (click)="create()">save</a>
+      </mat-icon>
+    </button>
+  </div>
 </div>

@@ -30,3 +30,8 @@ mat-grid-tile{
 .rouge {
     color: rgb(219, 98, 98);
 }
+
+.messErr {
+    color: red;
+    font: oblique 10px bold;
+ }
