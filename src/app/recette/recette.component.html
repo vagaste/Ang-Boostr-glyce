@@ -2,6 +2,11 @@
   <h2>Créez votre propre recette !</h2>
 </div>
 
+<div *ngIf="recette.name!= '' && recette.portions.length != 0; else messErr" ></div>
+<ng-template #messErr>
+  <p class="messErr">Merci de saisir un nom ET au moins une portion pour enregistrer votre recette.</p>
+</ng-template>
+
 <div>
   <mat-form-field class="recette-nom" appearance="outline">
     <mat-label>Nom de ma recette</mat-label>
@@ -26,64 +31,54 @@
 
     <button mat-icon-button>
       <mat-icon>
-        <a (click)="stockPortion()" 
-        title="ajouter cet aliment">add</a>
+        <a (click)="stockPortion()" title="ajouter cet aliment">add</a>
       </mat-icon>
     </button>
 
   </mat-toolbar>
 
-<div>
-  <mat-grid-list cols="4" rowHeight="8:1">
-    <div>
-      <mat-grid-tile>Aliments</mat-grid-tile>
-      <mat-grid-tile>Quantité</mat-grid-tile>
-      <mat-grid-tile>Charge Glycémique</mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-    </div>
-    <div *ngFor="let port of tableauPortion">
-      <mat-grid-tile>{{port.nameAliment}}</mat-grid-tile>
-      <mat-grid-tile>{{port.quantityPortion}}</mat-grid-tile>
-      <mat-grid-tile>{{port.cgPortion | number:'1.0-2'}}
-      </mat-grid-tile>
-      <mat-grid-tile>
-        <button mat-icon-button>
-          <mat-icon>
-            <a class="rouge" 
-            (click)="destockPortion(tableauPortion.indexOf(port))"
-            title="supprimer cet aliment">
-            delete_forever</a>
-          </mat-icon>
-        </button>
-      </mat-grid-tile>
-    </div>
-    <div>
-      <mat-grid-tile></mat-grid-tile>
-      <mat-grid-tile>Total charge glycémique :</mat-grid-tile>
-      <mat-grid-tile>{{cgRecette | number:'1.0-2'}}</mat-grid-tile>
-      <mat-grid-tile></mat-grid-tile>
-    </div>
-  </mat-grid-list>
-</div>
+  <div>
+    <mat-grid-list cols="4" rowHeight="8:1">
+      <div>
+        <mat-grid-tile>Aliments</mat-grid-tile>
+        <mat-grid-tile>Quantité</mat-grid-tile>
+        <mat-grid-tile>Charge Glycémique</mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+      </div>
+      <div *ngFor="let port of tableauPortion">
+        <mat-grid-tile>{{port.nameAliment}}</mat-grid-tile>
+        <mat-grid-tile>{{port.quantityPortion}}</mat-grid-tile>
+        <mat-grid-tile>{{port.cgPortion | number:'1.0-2'}}
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-icon-button>
+            <mat-icon>
+              <a class="rouge" (click)="destockPortion(tableauPortion.indexOf(port))" title="supprimer cet aliment">
+                delete_forever</a>
+            </mat-icon>
+          </button>
+        </mat-grid-tile>
+      </div>
+      <div>
+        <mat-grid-tile></mat-grid-tile>
+        <mat-grid-tile>Total charge glycémique :</mat-grid-tile>
+        <mat-grid-tile>{{cgRecette | number:'1.0-2'}}</mat-grid-tile>
+        <mat-grid-tile></mat-grid-tile>
+      </div>
+    </mat-grid-list>
+  </div>
 
-  <ng-template #messErr>
-    <p class="messErr">Merci de saisir un nom ET au moins une portion pour enregistrer votre recette.</p>
-  </ng-template>
-<br>
   <mat-form-field class="recette-com" appearance="outline">
     <mat-label>commentaire</mat-label>
-    <input matInput placeholder="Commentaire" 
-    title="saisir un commentaire sur la recette"
-    [(ngModel)]="recette.comment">
+    <input matInput placeholder="Commentaire" title="saisir un commentaire sur la recette" [(ngModel)]="recette.comment">
     <mat-icon matSuffix>edit</mat-icon>
   </mat-form-field>
-<br>
+  <br>
   <!-- <button>Enregistrer recette</button> -->
-  <div *ngIf="recette.name!= '' && recette.portions!=[]; else messErr">
-  <button>
-    <mat-icon>
-    <a (click)="create()" title="enregistrer la recette">save</a>
-  </mat-icon>
-  </button>
-</div>
- 
+  <div *ngIf="recette.name!= '' && recette.portions.length != 0">
+    <button>
+      <mat-icon>
+        <a (click)="create()" title="enregistrer la recette">save</a>
+      </mat-icon>
+    </button>
+  </div>
