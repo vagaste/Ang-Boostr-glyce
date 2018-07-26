@@ -6,7 +6,7 @@
   </mat-list>
   <h5>Mes ingrédients: </h5>
   <mat-list dense *ngIf="recette">
-    <mat-list-item *ngFor="let portion of recette.portions">
+    <mat-list-item class="limit-largeur" *ngFor="let portion of recette.portions">
       {{portion.quantity}} g(ou cl) - {{portion.aliment.name}}
     </mat-list-item>
     <br>
@@ -14,19 +14,19 @@
     <mat-grid-list fxFill cols="2" rowHeight="6:1">
       <mat-grid-tile class="nutritional-header" [colspan]="2">Valeurs nutritionnelles pour la recette</mat-grid-tile>
       <mat-grid-tile class="nutritional-bottom-hidden">Energie</mat-grid-tile>
-      <mat-grid-tile class="nutritional-bottom-hidden">{{recette.energy}} Kcal</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">{{recette.energy | number:'1.0-2'}} Kcal</mat-grid-tile>
       <mat-grid-tile class="nutritional-bottom-hidden">Protéines</mat-grid-tile>
-      <mat-grid-tile class="nutritional-bottom-hidden">{{recette.protein}} g</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">{{recette.protein | number:'1.0-2'}} g</mat-grid-tile>
       <mat-grid-tile>Glucides</mat-grid-tile>
-      <mat-grid-tile>{{recette.carb}} g</mat-grid-tile>
+      <mat-grid-tile>{{recette.carb | number:'1.0-2'}} g</mat-grid-tile>
       <mat-grid-tile class="nutritional-top">dont sucres</mat-grid-tile>
-      <mat-grid-tile class="nutritional-top">{{recette.sugar}} g</mat-grid-tile>
+      <mat-grid-tile class="nutritional-top">{{recette.sugar | number:'1.0-2'}} g</mat-grid-tile>
       <mat-grid-tile>Lipides:</mat-grid-tile>
-      <mat-grid-tile>{{recette.lipid}} g</mat-grid-tile>
+      <mat-grid-tile>{{recette.lipid | number:'1.0-2'}} g</mat-grid-tile>
       <mat-grid-tile>Fibres:</mat-grid-tile>
-      <mat-grid-tile>{{recette.fibre}} g</mat-grid-tile>
+      <mat-grid-tile>{{recette.fibre | number:'1.0-2'}} g</mat-grid-tile>
       <mat-grid-tile class="nutritional-footer-left">Sel: </mat-grid-tile>
-      <mat-grid-tile class="nutritional-footer-right">{{recette.salt}} g</mat-grid-tile>
+      <mat-grid-tile class="nutritional-footer-right">{{recette.salt | number:'1.0-2'}} g</mat-grid-tile>
     </mat-grid-list>
   </mat-list>
 </div>

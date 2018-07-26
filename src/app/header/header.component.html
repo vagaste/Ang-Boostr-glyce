@@ -1,5 +1,5 @@
 <mat-toolbar class="mt-tb-head" fxLayout="row" fxLayoutAlign="space-around center">
-    <!-- ######################################################################## -->
+  <!-- ######################################################################## -->
   <!-- These Lines are commented because of unavailable function for Version 1 -->
 
   <!-- <button class="bar-buttons" mat-button [matMenuTriggerFor]="menu">
@@ -10,8 +10,8 @@
   <button class="bar-buttons" mat-button>
     <a routerLink="/aliments" class="bar-buttons-text">aliments</a>
   </button>
-  <button class="bar-buttons" mat-button [matMenuTriggerFor]="recettes">
-    <a class="bar-buttons-text">recettes</a>
+  <button class="bar-buttons" mat-button>
+      <a routerLink="/recette/liste" class="bar-buttons-text">recettes</a>
   </button>
 
   <!-- ######################################################################## -->
@@ -42,14 +42,7 @@
       </mat-menu> -->
   <!-- ######################################################################## -->
 
-  <mat-menu class="bar-buttons" #recettes="matMenu">
-    <button class="bar-buttons" mat-menu-item>
-      <a routerLink="/recette/liste" class="bar-buttons-text-drop">afficher</a>
-    </button>
-    <button class="bar-buttons" mat-menu-item>
-      <a routerLink="/recette/create" class="bar-buttons-text-drop">créer</a>
-    </button>
-  </mat-menu>
+  
 
   <!-- ######################################################################## -->
   <!-- These Lines are commented because of unavailable function for Version 1 -->

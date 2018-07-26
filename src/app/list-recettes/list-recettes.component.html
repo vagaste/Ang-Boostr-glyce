@@ -1,11 +1,28 @@
-<div fxLayout="row" fxLayoutAlign="space-around start" >
+<!-- Affichage de la liste des recettes & du détail dans un élément Ligne -->
+<div fxLayout="row" fxLayoutAlign="space-around start">
+
+  <!-- Affichage de la première colonne Liste -->
   <div fxLayout="column" fxLayoutAlign="space-around start">
     <h4>Mes recettes</h4>
-    <mat-list dense *ngIf="listRecette">
+    <mat-list dense>
+      <mat-list-item>
+        <a matLine>Créer</a>
+        <button mat-icon-button>
+          <mat-icon routerLink="/recette/create" title="ajouter une recette">save_alt</mat-icon>
+        </button>
+      </mat-list-item>
       <mat-list-item *ngFor="let recette of listRecette">
-        <div matLine (click)="selectRecette(recette)">{{ recette.name }}</div>
+        <a matLine (click)="selectRecette(recette)">{{ recette.name }} </a>
+        <button mat-icon-button>
+          <mat-icon>
+            <a class="rouge" title="supprimer cette recette">delete_forever</a>
+          </mat-icon>
+        </button>
       </mat-list-item>
     </mat-list>
   </div>
-  <app-recette-detail [recette]="selectedRecette"></app-recette-detail>
+  <!-- Affichage de la deuxième colonne Detail -->
+  <div fxLayout="column" fxLayoutAlign="space-around start">
+    <app-recette-detail [recette]="selectedRecette"></app-recette-detail>
+  </div>
 </div>
