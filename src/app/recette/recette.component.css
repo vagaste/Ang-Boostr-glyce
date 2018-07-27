@@ -14,8 +14,11 @@ mat-toolbar{
 }
 
 .recette-nom{
-    margin-top: 10px;
-    width: 360px;
+    width: 100%;
+}
+
+.recette-com {
+    display: flex;
 }
 
 .poids{
@@ -35,4 +38,9 @@ mat-grid-tile{
     color: red;
     font-size: 12px;
     font-style: oblique;
+    text-align: center;
+ }
+
+ .center {
+    display: flex;
  }

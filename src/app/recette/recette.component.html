@@ -2,7 +2,8 @@
   <h2>Créez votre propre recette !</h2>
 </div>
 
-<div *ngIf="recette.name!= '' && recette.portions.length != 0; else messErr" ></div>
+<!--mess d alerte selon saisie-->
+<div *ngIf="recette.name!= '' && recette.portions.length != 0; else messErr"></div>
 <ng-template #messErr>
   <p class="messErr">Merci de saisir un nom ET au moins une portion pour enregistrer votre recette.</p>
 </ng-template>
@@ -10,7 +11,7 @@
 <div>
   <mat-form-field class="recette-nom" appearance="outline">
     <mat-label>Nom de ma recette</mat-label>
-    <input matInput title="saisir le nom de la recette" [(ngModel)]="recette.name">
+    <input autofocus matInput title="saisir le nom de la recette" [(ngModel)]="recette.name" type="text">
     <mat-icon matSuffix>edit</mat-icon>
   </mat-form-field>
 
@@ -31,20 +32,21 @@
 
     <button mat-icon-button>
       <mat-icon>
-        <a (click)="stockPortion()" title="ajouter cet aliment">add</a>
+        <a (click)="stockPortion()" type=r title="ajouter cet aliment">add</a>
       </mat-icon>
     </button>
 
   </mat-toolbar>
 
-  <div>
-    <mat-grid-list cols="4" rowHeight="8:1">
+  <div >
+    <mat-grid-list fxLayout="column" fxLayoutAlign="space-around start" cols="4" rowHeight="8:1">
       <div>
         <mat-grid-tile>Aliments</mat-grid-tile>
         <mat-grid-tile>Quantité</mat-grid-tile>
         <mat-grid-tile>Charge Glycémique</mat-grid-tile>
         <mat-grid-tile></mat-grid-tile>
       </div>
+      <br>
       <div *ngFor="let port of tableauPortion">
         <mat-grid-tile>{{port.nameAliment}}</mat-grid-tile>
         <mat-grid-tile>{{port.quantityPortion}}</mat-grid-tile>
@@ -74,11 +76,12 @@
     <mat-icon matSuffix>edit</mat-icon>
   </mat-form-field>
   <br>
-  <!-- <button>Enregistrer recette</button> -->
+  <!-- bouton sauvegarde recette qui ne s affiche qu apres controle de saisie de nom et d au moins une portion, sinon mess d'erreur -->
   <div *ngIf="recette.name!= '' && recette.portions.length != 0">
-    <button>
+    <button class="center">
       <mat-icon>
         <a (click)="create()" title="enregistrer la recette">save</a>
       </mat-icon>
     </button>
   </div>
+  <br>
