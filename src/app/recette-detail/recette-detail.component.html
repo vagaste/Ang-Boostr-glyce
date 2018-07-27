@@ -1,13 +1,21 @@
 <div fxLayout="column" fxLayoutAlign="space-around start">
+
   <h4>Détail de ma recette</h4>
-  <mat-list dense >
-    <mat-list-item *ngIf="recette">Nom: {{recette.name}}</mat-list-item>
-    <mat-list-item *ngIf="recette">Commentaires: {{recette.comment}}</mat-list-item>
+  <mat-list dense>
+    <mat-list-item>
+      <a class="label">Nom:</a>&nbsp;
+      <a *ngIf="recette">{{recette.name}}</a>
+    </mat-list-item>
+    <mat-list-item>
+      <a class="label">Commentaires:</a>&nbsp;
+      <a *ngIf="recette">{{ recette.comment}}</a>
+    </mat-list-item>
   </mat-list>
+
   <h5>Mes ingrédients: </h5>
   <mat-list dense *ngIf="recette">
     <mat-list-item class="limit-largeur" *ngFor="let portion of recette.portions">
-      {{portion.quantity}} g(ou cl) - {{portion.aliment.name}}
+      {{portion.quantity}} g(cl) - {{portion.aliment.name}}
     </mat-list-item>
     <br>
 
