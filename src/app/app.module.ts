@@ -30,8 +30,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableModule } from '@angular/material/table';
-import { CdkTableModule } from '@angular/cdk/table';
+import { MatTableModule, MatCellDef } from '@angular/material/table';
 import { RecetteComponent } from './recette/recette.component';
 import { AlimentsComponent } from './aliments/aliments.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -101,7 +100,6 @@ const routes: Routes = [
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
-    CdkTableModule,
     MatIconModule,
     RouterModule.forRoot(routes),
     MatAutocompleteModule,

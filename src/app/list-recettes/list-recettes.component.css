@@ -10,3 +10,7 @@ h4 {
 .rouge {
     color: rgb(219, 98, 98);
 }
+
+.cursorPointer{
+    cursor: pointer;
+  }

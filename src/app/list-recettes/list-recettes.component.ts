@@ -14,7 +14,7 @@ listRecette: Recette[] = [];
 selectedRecette: Recette;
 recetteId: number;
   constructor(public recetteService: RecetteService, public router: Router) {
-    
+
      // override the route reuse strategy
      this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;

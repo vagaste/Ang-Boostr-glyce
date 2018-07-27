@@ -1,58 +1,67 @@
-<div class="titre-milieu">
-  <h2>Créez votre propre recette !</h2>
-</div>
+<div fxLayout="column">
+  <div class="titre" fxFlexAlign="center">
+    <h2>Créez votre propre recette !</h2>
+  </div>
 
-<!--mess d alerte selon saisie-->
-<div *ngIf="recette.name!= '' && recette.portions.length != 0; else messErr"></div>
-<ng-template #messErr>
-  <p class="messErr">Merci de saisir un nom ET au moins une portion pour enregistrer votre recette.</p>
-</ng-template>
+  <!--mess d alerte selon saisie-->
+  <div *ngIf="recette.name!= '' && recette.portions.length != 0; else messErr"></div>
+  <ng-template #messErr>
+    <div fxFlexAlign="center">
+      <p class="messErr">Merci de saisir un nom ET au moins une portion pour enregistrer votre recette.</p>
+    </div>
+  </ng-template>
 
-<div>
-  <mat-form-field class="recette-nom" appearance="outline">
+  <br>
+  <mat-form-field class="stretch" appearance="outline">
     <mat-label>Nom de ma recette</mat-label>
-    <input autofocus matInput title="saisir le nom de la recette" [(ngModel)]="recette.name" type="text">
+    <input autofocus matInput [maxLength]="30" title="saisir le nom de la recette" [(ngModel)]="recette.name" type="text">
     <mat-icon matSuffix>edit</mat-icon>
   </mat-form-field>
 
-  <!-- autocomplete -->
-  <mat-toolbar fxLayout="row" fxLayoutAlign="center center">
-    <mat-form-field>
-      <input type="text" placeholder="Saisir un aliment" aria-label="recetteAliment" matInput [formControl]="myControl" [matAutocomplete]="auto"
-        [(ngModel)]="selectedAliment" name="nomAliment">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option.name}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <!-- formulaire de calcul de la charge glycémique, calories...-->
+  <!--form de saisie de portion-->
+  <div>
+    <mat-toolbar class="stretch">
+      <mat-form-field>
+        <!-- autocomplete -->
+        <input type="text" placeholder="Saisir un aliment" aria-label="recetteAliment" matInput [formControl]="myControl" [matAutocomplete]="auto"
+          [(ngModel)]="selectedAliment" name="nomAliment">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
 
-    <input class="poids" type="number" placeholder="Portion en g" [(ngModel)]="quantityPortion" name="quantity" />
+      <!-- zone saisie quantité portion -->
+      <input class="poids" type="number" placeholder="Portion g ou cl" [(ngModel)]="quantityPortion" name="quantity" />
 
-    <button mat-icon-button>
-      <mat-icon>
-        <a (click)="stockPortion()" type=r title="ajouter cet aliment">add</a>
-      </mat-icon>
-    </button>
+      <button mat-icon-button *ngIf="selectedAliment!= null && quantityPortion != null">
+        <mat-icon>
+          <a (click)="stockPortion()" title="ajouter cet aliment">add</a>
+        </mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <br>
 
-  </mat-toolbar>
-
-  <div >
-    <mat-grid-list fxLayout="column" fxLayoutAlign="space-around start" cols="4" rowHeight="8:1">
-      <div>
-        <mat-grid-tile>Aliments</mat-grid-tile>
-        <mat-grid-tile>Quantité</mat-grid-tile>
-        <mat-grid-tile>Charge Glycémique</mat-grid-tile>
-        <mat-grid-tile></mat-grid-tile>
-      </div>
-      <br>
-      <div *ngFor="let port of tableauPortion">
-        <mat-grid-tile>{{port.nameAliment}}</mat-grid-tile>
-        <mat-grid-tile>{{port.quantityPortion}}</mat-grid-tile>
-        <mat-grid-tile>{{port.cgPortion | number:'1.0-2'}}
-        </mat-grid-tile>
-        <mat-grid-tile>
+  <!-- nos portions-->
+  <div fxFlexAlign="stretch" *ngIf="tableauPortion.length!=0">
+    <div>
+      <mat-grid-list class="entete" cols="12" rowHeight="3:2">
+        <mat-grid-tile [colspan]=6>Aliments</mat-grid-tile>
+        <mat-grid-tile [colspan]=2>Quantité g (cl)</mat-grid-tile>
+        <mat-grid-tile [colspan]=3>Charge Glycémique</mat-grid-tile>
+        <mat-grid-tile [colspan]=1></mat-grid-tile>
+      </mat-grid-list>
+    </div>
+    <br>
+    <!-- affichage des portions saisies -->
+    <div *ngFor="let port of tableauPortion">
+      <mat-grid-list cols="12" rowHeight="100px">
+        <mat-grid-tile [colspan]=6>{{port.nameAliment}}</mat-grid-tile>
+        <mat-grid-tile [colspan]=2>{{port.quantityPortion}}</mat-grid-tile>
+        <mat-grid-tile [colspan]=3>{{port.cgPortion | number:'1.0-2'}}</mat-grid-tile>
+        <mat-grid-tile [colspan]=1>
           <button mat-icon-button>
             <mat-icon>
               <a class="rouge" (click)="destockPortion(tableauPortion.indexOf(port))" title="supprimer cet aliment">
@@ -60,26 +69,34 @@
             </mat-icon>
           </button>
         </mat-grid-tile>
-      </div>
-      <div>
-        <mat-grid-tile></mat-grid-tile>
-        <mat-grid-tile>Total charge glycémique :</mat-grid-tile>
-        <mat-grid-tile>{{this.recette.cg | number:'1.0-2'}}</mat-grid-tile>
-        <mat-grid-tile></mat-grid-tile>
-      </div>
-    </mat-grid-list>
+      </mat-grid-list>
+    </div>
+    <br>
+    <!-- affichage resultat de la charge glycemique globale de la recette -->
+    <div>
+      <mat-grid-list cols="12" style="font-weight:bold; color: red">
+        <mat-grid-tile [colspan]=7>Total charge glycémique :</mat-grid-tile>
+        <mat-grid-tile [colspan]=2>{{this.recette.cg | number:'1.0-2'}}</mat-grid-tile>
+      </mat-grid-list>
+    </div>
   </div>
-
-  <mat-form-field class="recette-com" appearance="outline">
-    <mat-label>commentaire</mat-label>
-    <input matInput placeholder="Commentaire" title="saisir un commentaire sur la recette" [(ngModel)]="recette.comment">
-    <mat-icon matSuffix>edit</mat-icon>
-  </mat-form-field>
   <br>
-  <!-- bouton sauvegarde recette qui ne s affiche qu apres controle de saisie de nom et d au moins une portion, sinon mess d'erreur -->
-  <div *ngIf="recette.name!= '' && recette.portions.length != 0">
-    <button class="center">
-      <mat-icon>
+
+  <div fxFlexAlign="stretch">
+    <!-- zone commentaires-->
+    <mat-form-field class="stretch" appearance="outline">
+      <mat-label>commentaire</mat-label>
+      <input matInput placeholder="Commentaire" title="saisir un commentaire sur la recette" [(ngModel)]="recette.comment">
+      <mat-icon matSuffix>edit</mat-icon>
+    </mat-form-field>
+  </div>
+  <br>
+
+  <!-- bouton sauvegarde recette-->
+  <div fxFlexAlign="center">
+    <!--ne s affiche qu apres controle de saisie de nom et d au moins une portion, sinon mess d'erreur -->
+    <button *ngIf="recette.name!= '' && recette.portions.length != 0">
+      <mat-icon class="end">
         <a (click)="create()" title="enregistrer la recette">save</a>
       </mat-icon>
     </button>

@@ -176,4 +176,5 @@ export class RecetteComponent implements OnInit {
   calculValNut(valeur) {
     return ((valeur / 100) * this.quantityPortion);
   }
+
 }
