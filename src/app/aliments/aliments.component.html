@@ -32,20 +32,41 @@
 <!--fin form recherche-->
 
 <!-- formulaire de calcul de la charge glycémique, calories...-->
-<div class="form-calcul">
-  <label>Aliment :
-    <input type="texte" [(ngModel)]="alimentSelected.name" />
-  </label>
-  <label> Grammes :
-    <input type="number" [(ngModel)]="quantityAliment" (input)="calculCg()" />
-  </label>
-
-  <!-- formate le nombre avec 1 chiffre avant la decimale et 2 après -->
-  <label> Charge glycémique : {{resultCg | number:'1.0-2'}}
-  </label>
+<div class="alim-select" fxLayout="row" fxLayoutAlign="space-around stretch">
+  <mat-card class="cards" fxLayout="column" fxLayoutAlign="start start">
+    <mat-card-header>
+      Aliment
+    </mat-card-header>
+    <mat-card-content>
+      <!--*ngIf="alimentSelected"-->
+      <mat-chip-list>
+        <mat-chip>{{ alimentSelected.name }}</mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="cards" fxLayout="column" fxLayoutAlign="start">
+    <mat-card-header>
+      Quantité
+    </mat-card-header>
+    <mat-card-content >
+      <mat-chip-list>
+        <mat-chip>
+          <input placeHolder="quantité" type="number" [(ngModel)]="quantityAliment" (input)="calculCg()" />
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="cards" fxLayout="column" fxLayoutAlign="start">
+    <mat-card-header>
+      Charge Glycémique
+    </mat-card-header>
+    <mat-card-content>
+      <mat-chip-list>
+        <mat-chip> {{resultCg | number:'1.0-2'}}</mat-chip>
+      </mat-chip-list>
+    </mat-card-content>
+  </mat-card>
 </div>
-<!--fin form calcul-->
-
 <!--affichage par defaut, de tous les aliments; ou du resultat de recherche-->
 <div *ngIf="sortedAliments" class="mat-elevation-z8">
   <table fxFill mat-table [dataSource]="sortedAliments" matSort (matSortChange)="sortData($event)" class="">
