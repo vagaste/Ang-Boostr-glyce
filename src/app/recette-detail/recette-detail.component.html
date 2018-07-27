@@ -13,6 +13,8 @@
 
     <mat-grid-list fxFill cols="2" rowHeight="6:1">
       <mat-grid-tile class="nutritional-header" [colspan]="2">Valeurs nutritionnelles pour la recette</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">Charge glycémique</mat-grid-tile>
+      <mat-grid-tile class="nutritional-bottom-hidden">{{recette.cg | number:'1.0-2'}}</mat-grid-tile>
       <mat-grid-tile class="nutritional-bottom-hidden">Energie</mat-grid-tile>
       <mat-grid-tile class="nutritional-bottom-hidden">{{recette.energy | number:'1.0-2'}} Kcal</mat-grid-tile>
       <mat-grid-tile class="nutritional-bottom-hidden">Protéines</mat-grid-tile>

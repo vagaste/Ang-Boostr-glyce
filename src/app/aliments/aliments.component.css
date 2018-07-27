@@ -26,3 +26,23 @@ th{
   color: green;
 }
   
+.alim-select{
+  width: auto;
+  height: auto;
+  background-color: rgba(211, 211, 211, 0.2);
+  margin-bottom: 10px;
+}
+.cards{
+  width: 32%;
+  min-height: 100%;
+}
+.cards-head{
+  background-color: lightgrey;
+}
+.chipsAliment{
+  align-items: stretch;
+  width: 30%;
+  height: auto;
+  min-height: 50px;
+
+}

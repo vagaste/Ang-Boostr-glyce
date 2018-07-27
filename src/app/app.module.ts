@@ -8,7 +8,9 @@ import { MatMenuModule,
          MatIconModule,
          MatAutocompleteModule,
          MatListModule,
-         MatGridListModule
+         MatGridListModule,
+         MatCardModule,
+         MatChipsModule
         } from '@angular/material';
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
@@ -104,7 +106,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MatAutocompleteModule,
     HttpClientModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    MatChipsModule
     ],
   exports: [
     MatMenuModule,

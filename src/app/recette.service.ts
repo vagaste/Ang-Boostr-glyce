@@ -22,4 +22,7 @@ export class RecetteService {
     return this.http.post<Recette>(this.API_URL_RECETTE + '/save', recette);
     }
 
+  removeRecetteById(id: number) {
+    return this.http.delete(this.API_URL_RECETTE + '/delete/' + id);
+  }
 }
