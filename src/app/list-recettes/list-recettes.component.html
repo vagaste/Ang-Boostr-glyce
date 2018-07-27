@@ -16,7 +16,7 @@
         matLine (click)="selectRecette(recette)">{{ recette.name }} </a>
         <button mat-icon-button>
           <mat-icon>
-            <a class="rouge" (click)="deleteRecette(listRecette.indexOf(recette))" title="supprimer cette recette">delete_forever</a>
+            <a class="rouge" (click)="deleteRecette(recette.id)" title="supprimer cette recette">delete_forever</a>
           </mat-icon>
         </button>
       </mat-list-item>
