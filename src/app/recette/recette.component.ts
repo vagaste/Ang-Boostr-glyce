@@ -81,20 +81,13 @@ export class RecetteComponent implements OnInit {
     this.recette.cg = this.recette.cg + this.resultCg;
 
     // calcul et cumul des valeurs nutritionnelles pour la recette
-    this.recette.energy = this.recette.energy +
-      this.calculValNut(this.selectedAliment.energy, this.quantityPortion);
-    this.recette.protein = this.recette.protein +
-      this.calculValNut(this.selectedAliment.protein, this.quantityPortion);
-    this.recette.carb = this.recette.carb +
-      this.calculValNut(this.selectedAliment.carb, this.quantityPortion);
-    this.recette.lipid = this.recette.lipid +
-      this.calculValNut(this.selectedAliment.lipid, this.quantityPortion);
-    this.recette.fibre = this.recette.fibre +
-      this.calculValNut(this.selectedAliment.fibre, this.quantityPortion);
-    this.recette.sugar = this.recette.sugar +
-      this.calculValNut(this.selectedAliment.sugar, this.quantityPortion);
-    this.recette.salt = this.recette.salt +
-      this.calculValNut(this.selectedAliment.salt, this.quantityPortion);
+    this.recette.energy += this.calculValNut(this.selectedAliment.energy);
+    this.recette.protein += this.calculValNut(this.selectedAliment.protein);
+    this.recette.carb += this.calculValNut(this.selectedAliment.carb);
+    this.recette.lipid += this.calculValNut(this.selectedAliment.lipid);
+    this.recette.fibre += this.calculValNut(this.selectedAliment.fibre);
+    this.recette.sugar += this.calculValNut(this.selectedAliment.sugar);
+    this.recette.salt += this.calculValNut(this.selectedAliment.salt);
 
     // on stocke les infos portion dans une liste pour les afficher à l'écran
     // ainsi que les calculs par portion
@@ -103,13 +96,13 @@ export class RecetteComponent implements OnInit {
       nameAliment: this.selectedAliment.name,
       quantityPortion: this.quantityPortion,
       cgPortion: this.resultCg,
-      energyPortion: this.calculValNut(this.selectedAliment.energy, this.quantityPortion),
-      proteinPortion: this.calculValNut(this.selectedAliment.protein, this.quantityPortion),
-      carbPortion: this.calculValNut(this.selectedAliment.carb, this.quantityPortion),
-      lipidPortion: this.calculValNut(this.selectedAliment.lipid, this.quantityPortion),
-      fibrePortion: this.calculValNut(this.selectedAliment.fibre, this.quantityPortion),
-      sugarPortion: this.calculValNut(this.selectedAliment.sugar, this.quantityPortion),
-      saltPortion: this.calculValNut(this.selectedAliment.salt, this.quantityPortion)
+      energyPortion: this.calculValNut(this.selectedAliment.energy),
+      proteinPortion: this.calculValNut(this.selectedAliment.protein),
+      carbPortion: this.calculValNut(this.selectedAliment.carb),
+      lipidPortion: this.calculValNut(this.selectedAliment.lipid),
+      fibrePortion: this.calculValNut(this.selectedAliment.fibre),
+      sugarPortion: this.calculValNut(this.selectedAliment.sugar),
+      saltPortion: this.calculValNut(this.selectedAliment.salt)
     };
     this.tableauPortion.push(tabPortion);
 
@@ -188,7 +181,7 @@ export class RecetteComponent implements OnInit {
     return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  calculValNut(valeur, qty) {
-    return ((valeur / 100) * qty);
+  calculValNut(valeur) {
+    return ((valeur / 100) * this.quantityPortion);
   }
 }
