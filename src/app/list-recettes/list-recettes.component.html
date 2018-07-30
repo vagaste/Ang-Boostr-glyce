@@ -12,11 +12,7 @@
         </button>
       </mat-list-item>
       <mat-list-item *ngFor="let recette of listRecette">
-<<<<<<< HEAD
-        <a title="cliquer sur la recette pour voir le détail" 
-=======
-        <a class="cursorPointer" title="cliquer sur la recette pour avoir le détail" 
->>>>>>> 9e2e7498df167d80cbb1cdc679b406ecf0540f6f
+        <a class="cursorPointer" title="cliquer sur la recette pour voir le détail" 
         matLine (click)="selectRecette(recette)">{{ recette.name }} </a>
         <button mat-icon-button>
           <mat-icon>
