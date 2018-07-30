@@ -1,21 +1,16 @@
 mat-toolbar{
-    height: 50px;
+    height: 55px;
     background-color: rgb(96, 214, 132);
     background-size: cover;
-    font-size: 16px;
+    font-size: 15px;
 }
 
-.titre-milieu{
-    margin-left: auto;
-    margin-right: auto;
-    width: 360px;
+.titre{
     border-bottom: 2px solid green;
-    text-align: center;
 }
 
-.recette-nom{
-    margin-top: 10px;
-    width: 360px;
+.stretch {
+    width: 100%;
 }
 
 .poids{
@@ -24,7 +19,7 @@ mat-toolbar{
     width: 100px;
 }
 mat-grid-tile{
-    min-height: 15px;
+    min-height: 40px;
 }
 
 .rouge {
@@ -35,4 +30,12 @@ mat-grid-tile{
     color: red;
     font-size: 12px;
     font-style: oblique;
+    text-align: center;
  }
+
+ .entete {
+     font-weight: bold;
+     text-align: center;
+ }
+ 
+

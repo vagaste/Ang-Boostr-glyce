@@ -14,11 +14,11 @@ listRecette: Recette[] = [];
 selectedRecette: Recette;
 recetteId: number;
   constructor(public recetteService: RecetteService, public router: Router) {
-    
+
      // override the route reuse strategy
-     this.router.routeReuseStrategy.shouldReuseRoute = function(){
+     this.router.routeReuseStrategy.shouldReuseRoute = function() {
       return false;
-   }
+   };
 
    this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
@@ -46,11 +46,8 @@ recetteId: number;
   selectRecette(selectedRecette: Recette) {
     this.selectedRecette = selectedRecette ;
   }
-  deleteRecette(index: number) {
-    console.log(index);
-    this.recetteId = this.listRecette[index].id;
-    console.log(this.recetteId);
-    this.recetteService.removeRecetteById(this.recetteId).subscribe(() => {
+  deleteRecette(Id: number) {
+      this.recetteService.removeRecetteById(Id).subscribe(() => {
       this.router.navigateByUrl('/recette/liste');
     }, (err) => {
       console.log('erreur !', err);

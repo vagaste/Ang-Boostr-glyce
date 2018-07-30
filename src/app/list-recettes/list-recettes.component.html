@@ -12,11 +12,15 @@
         </button>
       </mat-list-item>
       <mat-list-item *ngFor="let recette of listRecette">
+<<<<<<< HEAD
         <a title="cliquer sur la recette pour voir le détail" 
+=======
+        <a class="cursorPointer" title="cliquer sur la recette pour avoir le détail" 
+>>>>>>> 9e2e7498df167d80cbb1cdc679b406ecf0540f6f
         matLine (click)="selectRecette(recette)">{{ recette.name }} </a>
         <button mat-icon-button>
           <mat-icon>
-            <a class="rouge" (click)="deleteRecette(listRecette.indexOf(recette))" title="supprimer cette recette">delete_forever</a>
+            <a class="rouge" (click)="deleteRecette(recette.id)" title="supprimer cette recette">delete_forever</a>
           </mat-icon>
         </button>
       </mat-list-item>

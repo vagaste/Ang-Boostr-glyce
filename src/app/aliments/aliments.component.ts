@@ -91,6 +91,7 @@ export class AlimentsComponent implements OnInit {
     this.alimentSelected = aliment;
     this.quantityAliment = 100; // Modifier la quantité initiale ici
     this.calculCg();
+    document.getElementById('focus').focus();
   }
 
   // explication calcul CG :

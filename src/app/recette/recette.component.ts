@@ -45,14 +45,6 @@ export class RecetteComponent implements OnInit {
     this.prepareAlimentList();
     this.resultCg = 0;
 
-    // this.energyRecette = 0;
-    // this.proteinRecette = 0;
-    // this.carbRecette = 0;
-    // this.lipidRecette = 0;
-    // this.fibreRecette = 0;
-    // this.sugarRecette = 0;
-    // this.saltRecette = 0;
-
     this.recette = {
       name: '',
       comment: '',
@@ -89,7 +81,7 @@ export class RecetteComponent implements OnInit {
     this.recette.sugar += this.calculValNut(this.selectedAliment.sugar);
     this.recette.salt += this.calculValNut(this.selectedAliment.salt);
 
-    // on stocke les infos portion dans une liste pour les afficher à l'écran
+    // on stocke les infos portion dans un objet pour les afficher à l'écran
     // ainsi que les calculs par portion
     const tabPortion = {
       idAliment: this.selectedAliment.id,
@@ -153,7 +145,7 @@ export class RecetteComponent implements OnInit {
       );
 
   }
-
+// methode de l autocompletion
   prepareAlimentList() {
     this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
       this.options = listAliments;
@@ -168,20 +160,21 @@ export class RecetteComponent implements OnInit {
           map(value => typeof value === 'string' ? value : value.name),
           map(name => name ? this._filter(name) : this.options.slice())
         );
-
     });
   }
 
-  displayFn(aliment?: Aliment): string | undefined {
-    return aliment ? aliment.name : undefined;
-  }
   private _filter(name: string): Aliment[] {
     const filterValue = name.toLowerCase();
 
     return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
   }
 
+  displayFn(aliment?: Aliment): string | undefined {
+    return aliment ? aliment.name : undefined;
+  }
+
   calculValNut(valeur) {
     return ((valeur / 100) * this.quantityPortion);
   }
+
 }
