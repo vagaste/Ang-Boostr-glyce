@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Recette } from 'src/app/recette';
-import { ListRecettesComponent } from '../list-recettes/list-recettes.component';
+
 
 @Component({
   selector: 'app-recette-detail',
@@ -9,7 +9,8 @@ import { ListRecettesComponent } from '../list-recettes/list-recettes.component'
 })
 export class RecetteDetailComponent implements OnInit {
 
-  // correspond a selectedRecette de ListRecettesComponent car ce composant est un composant enfant de ListRecette (appelé ds le HTML)
+  // matches with object "selectedRecette" of ListRecettesComponent
+  // because this component is a child component of ListRecette (calling in HTML)
 @Input() recette: Recette;
 
   constructor() { }

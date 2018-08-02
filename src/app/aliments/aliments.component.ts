@@ -1,8 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup
-} from '@angular/forms';
 import { AlimentService } from '../aliment.service';
 import { Aliment } from '../aliment';
 import { Sort, MatPaginator, MatTableDataSource } from '@angular/material';
@@ -23,42 +19,23 @@ export class AlimentsComponent implements OnInit {
   alimentToDisplay: Aliment;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  // ici on injecte le service AlimentService : nom + type. L'injection permet de
-  // déclarer ici l'objet "aliments"
   constructor(public alimentService: AlimentService) {
 
   }
 
   ngOnInit() {
-    // le composant est prêt à être utilisé : mettre son code ici
-    // l'objet aliment est alimenté avec l'objet aliment déclaré dans le service alimentService
-    // this.sortedAliments.paginator = this.paginator;
 
+    // calling DB
     this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
       this.listAliments = listAliments;
       this.sortedAliments = new MatTableDataSource<Aliment>(this.listAliments);
     });
 
-
-    this.alimentSelected = {
-      id: 0,
-      name: '',
-      category: null,
-      energy: 0,
-      ig: 0,
-      protein: 0,
-      carb: 0,
-      sugar: 0,
-      lipid: 0,
-      fibre: 0,
-      salt: 0,
-      cg: 0
-    };
-
     this.resultCg = 0;
     this.quantityAliment = 0;
   }
 
+// method to sort list of aliments
   sortData(sort: Sort) {
     const data = this.listAliments.slice();
     this.sortedAliments.paginator = this.paginator;
@@ -85,34 +62,35 @@ export class AlimentsComponent implements OnInit {
   }
 
 
-  // A la seclection d'un aliment, le calcul de la CG se fait automatiquement avec une portion de 100g
+  // automatic calculation of the glycemic load, when we select an aliment, at first on 100g
   selectAliment(aliment, e) {
     e.preventDefault();
     this.alimentSelected = aliment;
-    this.quantityAliment = 100; // Modifier la quantité initiale ici
+    // quantity by default
+    this.quantityAliment = 100;
     this.calculCg();
+    // focus on the field "quantity"
     document.getElementById('focus').focus();
   }
 
-  // explication calcul CG :
-  public calculCg() {
-    if (this.alimentSelected) { // Si il n'y a pas d'aliment séléctionné, pas de calcul de résultat
+  // method to calculate glycemique charge
+  calculCg() {
+    if (this.alimentSelected) {
       this.resultCg = ((this.alimentSelected.ig * ((this.quantityAliment * this.alimentSelected.carb) / 100)) / 100);
     }
   }
 
-// methodes qui permet d afficher ou cacher une div contenant le detail de l aliment, selon un clic bouton
+  // method who let to display a div element with aliment's details
   displayDetailsAliment(alimentId: number) {
     document.getElementById('btnDetailOn_' + alimentId).style.display = 'none';
     document.getElementById('btnDetailOff_' + alimentId).style.display = 'initial';
     document.getElementById('divDetail_' + alimentId).style.display = 'initial';
-}
+  }
 
-
+// method who let to hide a div element with aliment's details
   closeDetailsAliment(alimentId: number) {
     document.getElementById('btnDetailOn_' + alimentId).style.display = 'initial';
     document.getElementById('btnDetailOff_' + alimentId).style.display = 'none';
     document.getElementById('divDetail_' + alimentId).style.display = 'none';
   }
-
 }

@@ -34,18 +34,23 @@ recetteId: number;
     this.getListRecette();
     }
 
+
   getListRecette() {
     this.recetteService.getAll().subscribe((listRecette: Recette[]) => {
       this.listRecette =  listRecette;
       if (this.listRecette && this.listRecette.length > 0) {
+        // by default selectedRecette will be the first recipe of the list, if there is a list
         this.selectedRecette = this.listRecette[0];
       }
     });
   }
 
+
   selectRecette(selectedRecette: Recette) {
     this.selectedRecette = selectedRecette ;
   }
+
+  // method to delete a recipe in DB
   deleteRecette(Id: number) {
       this.recetteService.removeRecetteById(Id).subscribe(() => {
       this.router.navigateByUrl('/recette/liste');

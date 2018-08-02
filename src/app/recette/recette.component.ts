@@ -39,9 +39,6 @@ export class RecetteComponent implements OnInit {
     public recetteService: RecetteService, public router: Router) { }
 
   ngOnInit() {
-    // ici on alimente option avec l'aliment service pour l'autocomplete
-    // mettre un subscribe quand on communiquera avec le back + mettre l'url du
-    // back dans le service
     this.prepareAlimentList();
     this.resultCg = 0;
 
@@ -67,12 +64,12 @@ export class RecetteComponent implements OnInit {
 
   stockPortion() {
 
-    // methode de calcul de la charge glycemique
+    // method to calculate glycemic charge
     this.resultCg = ((this.selectedAliment.ig *
       ((this.quantityPortion * this.selectedAliment.carb) / 100)) / 100);
     this.recette.cg = this.recette.cg + this.resultCg;
 
-    // calcul et cumul des valeurs nutritionnelles pour la recette
+    // calculation and cumulation nutritionals values for the recipe
     this.recette.energy += this.calculValNut(this.selectedAliment.energy);
     this.recette.protein += this.calculValNut(this.selectedAliment.protein);
     this.recette.carb += this.calculValNut(this.selectedAliment.carb);
@@ -81,8 +78,8 @@ export class RecetteComponent implements OnInit {
     this.recette.sugar += this.calculValNut(this.selectedAliment.sugar);
     this.recette.salt += this.calculValNut(this.selectedAliment.salt);
 
-    // on stocke les infos portion dans un objet pour les afficher à l'écran
-    // ainsi que les calculs par portion
+    // informations of portion to display on screen
+    // and calculation on the portion added
     const tabPortion = {
       idAliment: this.selectedAliment.id,
       nameAliment: this.selectedAliment.name,
@@ -98,7 +95,7 @@ export class RecetteComponent implements OnInit {
     };
     this.tableauPortion.push(tabPortion);
 
-    // on sauvegarde l'aliment et la portion
+
     const portionToAdd = {
       quantity: 0,
       aliment: null
@@ -114,10 +111,10 @@ export class RecetteComponent implements OnInit {
 
   }
 
-  // Fonction de destockage de la portion affichée
-  // le bouton supprime la portion dans les tableaux à l'index de port of tableauPortion
-  // et supprime également la portion dans la recette.
-  // Les cumuls de la CG et des valeurs nutritionnelles sont recalculés
+  // Method to destock the portion displayed
+  // the bin button delete this current portion in table
+  // and too in the object "recette".
+  // cumulations glycemic charge and ntritionnals values are calculating again
   destockPortion(portindex) {
     this.recette.cg = this.recette.cg - this.tableauPortion[portindex].cgPortion;
     this.recette.energy = this.recette.energy - this.tableauPortion[portindex].energyPortion;
@@ -133,6 +130,7 @@ export class RecetteComponent implements OnInit {
 
   }
 
+  // save recipe in DB
   create() {
 
     this.recetteService.createRecette(this.recette)
@@ -145,7 +143,7 @@ export class RecetteComponent implements OnInit {
       );
 
   }
-// methode de l autocompletion
+// method for autocompletion
   prepareAlimentList() {
     this.alimentService.getAll().subscribe((listAliments: Aliment[]) => {
       this.options = listAliments;
@@ -173,6 +171,7 @@ export class RecetteComponent implements OnInit {
     return aliment ? aliment.name : undefined;
   }
 
+  // method calculate nutritionnal value in accordance with quantity choosen
   calculValNut(valeur) {
     return ((valeur / 100) * this.quantityPortion);
   }

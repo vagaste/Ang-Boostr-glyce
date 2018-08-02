@@ -1,7 +1,7 @@
-<!-- Affichage de la liste des recettes & du détail dans un élément Ligne -->
+<!-- Display of the list of recipes, and of detail of selected recipe-->
 <div fxLayout="row" fxLayoutAlign="space-around start">
 
-  <!-- Affichage de la première colonne Liste -->
+  <!-- Display of the list in first column of component -->
   <div fxLayout="column" fxLayoutAlign="space-around start">
     <h4>Mes recettes</h4>
     <mat-list dense>
@@ -22,7 +22,7 @@
       </mat-list-item>
     </mat-list>
   </div>
-  <!-- Affichage de la deuxième colonne Detail -->
+  <!-- Display of the detail in second column of component, this part is coding in a child component <app-recette-detail> -->
   <div fxLayout="column" fxLayoutAlign="space-around start">
     <app-recette-detail [recette]="selectedRecette"></app-recette-detail>
   </div>

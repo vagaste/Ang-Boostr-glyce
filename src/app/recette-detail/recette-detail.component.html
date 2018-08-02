@@ -1,3 +1,4 @@
+<!--subcomponent of component list-recette-->
 <div fxLayout="column" fxLayoutAlign="space-around start">
 
   <h4>Détail de ma recette</h4>
@@ -18,7 +19,7 @@
       {{portion.quantity}} g(cl) - {{portion.aliment.name}}
     </mat-list-item>
     <br>
-
+<!--table of nutrtionals values of the current recipe-->
     <mat-grid-list fxFill cols="2" rowHeight="6:1">
       <mat-grid-tile class="nutritional-header" [colspan]="2">Valeurs nutritionnelles pour la recette</mat-grid-tile>
       <mat-grid-tile class="nutritional-bottom-hidden">Charge glycémique</mat-grid-tile>

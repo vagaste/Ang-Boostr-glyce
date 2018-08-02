@@ -12,13 +12,13 @@ import { MatMenuModule,
          MatCardModule,
          MatChipsModule
         } from '@angular/material';
+
 import { FormsModule,
          ReactiveFormsModule} from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, AfterViewInit } from '@angular/core';
-
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
@@ -30,7 +30,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableModule, MatCellDef } from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { RecetteComponent } from './recette/recette.component';
 import { AlimentsComponent } from './aliments/aliments.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -40,11 +40,9 @@ import { RecetteDetailComponent } from './recette-detail/recette-detail.componen
 
 const routes: Routes = [
 
-// path = ' ' signifie que si on a du blanc dans l'url après la home page, le
-// routeur nous affiche la page aliment par défaut
-// path = "**" : s'il y a n'importe quoi dans l'url, le routeur nous affiche la page aliment
-// L'ordre des chemins est important
-// patchMatch : il faut que ça corresponde exactement à ce qui est mis dans le path
+// path = ' ' indicate if there is nothing after the port in the URL, the router redirect to path/aliments
+// and display "Aliment" sheet by default
+// path = "**" : if there is anything, never mind, the router display "Aliment" sheet
 
   { path: '', redirectTo: '/aliments', pathMatch: 'full' },
 
@@ -60,14 +58,11 @@ const routes: Routes = [
     path: 'recette/create',
     component: RecetteComponent},
 
-  /* {
-    path: 'recette/:id',
-    component: RecetteComponent}, */
-
   {
     path: '**',
     component: AlimentsComponent}
    ] ;
+
 
 @NgModule({
   declarations: [

@@ -8,11 +8,10 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class AlimentService {
-  // searchedAliments;
+
   API_URL_ALIMENT = environment.urlBack + '/aliment';
 
   constructor(private http: HttpClient) {
-    // this.searchedAliments = ALIMENT_DATA;
   }
 
 

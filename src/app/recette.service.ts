@@ -9,7 +9,6 @@ import { environment } from '../environments/environment';
 })
 export class RecetteService {
 
-  // ici on met l'url du back (cf postman)
   API_URL_RECETTE = environment.urlBack + '/recettes';
   constructor(private http: HttpClient) { }
 

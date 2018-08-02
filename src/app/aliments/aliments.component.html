@@ -1,45 +1,11 @@
-<!--formulaire de recherche non disponible dans la version 1-->
-<!-- <div class="search-form" fxLayout="row" fxLayoutAlign="space-around center">
-  <mat-form-field class="form-field-margin">
-    <input matInput placeholder="Nom de l'aliment">
-  </mat-form-field>
-
-  <mat-form-field class="form-field-margin">
-    <input matInput placeholder="Nom de la catégorie">
-  </mat-form-field>
-
-  <mat-form-field class="form-field-margin">
-    <mat-label>KCal/100g : </mat-label>
-    <mat-select placeholder="Faites votre choix">
-      <mat-option value="1">de 0 à 50</mat-option>
-      <mat-option value="2">de 50 à 100</mat-option>
-      <mat-option value="3">de 100 à 200</mat-option>
-      <mat-option value="4">sup à 200</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="form-field-margin">
-    <mat-label>Indice glycémique: </mat-label>
-    <mat-select>
-      <mat-option value="IG faible">IG faible jusqu'à 39</mat-option>
-      <mat-option value="IG moyen">IG moyen de 40 à 59</mat-option>
-      <mat-option value="IG fort">IG fort > à 60</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-icon-button>
-    <i class="material-icons send">send</i>
-  </button>
-</div> -->
-<!--fin form recherche-->
-
-<!-- formulaire de calcul de la charge glycémique, calories...-->
+<!-- form to calculate glycemic charge-->
 <div class="alim-select" fxLayout="row" fxLayoutAlign="space-around stretch">
   <mat-card class="cards" fxLayout="column" fxLayoutAlign="start start">
     <mat-card-header>
       Aliment
     </mat-card-header>
     <mat-card-content>
-      <!--*ngIf="alimentSelected"-->
-      <mat-chip-list>
+      <mat-chip-list *ngIf="alimentSelected">
         <mat-chip>{{ alimentSelected.name }}</mat-chip>
       </mat-chip-list>
     </mat-card-content>
@@ -67,7 +33,8 @@
     </mat-card-content>
   </mat-card>
 </div>
-<!--affichage par defaut, de tous les aliments; ou du resultat de recherche-->
+
+<!--display default all aliments DB-->
 <div *ngIf="sortedAliments" class="mat-elevation-z8">
   <table fxFill mat-table [dataSource]="sortedAliments" matSort (matSortChange)="sortData($event)" class="">
     <!-- Aliment Column -->
@@ -82,6 +49,7 @@
         <br>
         <div></div>
         <br>
+        <!-- details of aliment selected diplayed on request -->
         <div id="divDetail_{{aliment.id}}" style="display:none;">
           <th>Proteines: </th>
           <td>{{aliment.protein}} g,</td>&nbsp;
@@ -120,12 +88,10 @@
     <!-- Charge Glycémique Column -->
     <ng-container matColumnDef="cg">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Charge Glycémique </th>
-      <td mat-cell *matCellDef="let aliment"> {{aliment.cg}} </td>
+      <td mat-cell *matCellDef="let aliment"> {{aliment.cg | number:'1.0-2'}} </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-
-  <!--mat-paginator [length]="listAliments.length" [pageSize]="2" [pageSizeOptions]="[2, 5, 10]" showFirstLastButtons></mat-paginator-->
 </div>
