@@ -17,7 +17,8 @@
     <mat-card-content >
       <mat-chip-list>
         <mat-chip>
-          <input id='focus' placeHolder="quantité" type="number" [(ngModel)]="quantityAliment" (input)="calculCg()" />
+          <input id='focus' placeHolder="quantité" type="number" min="1" 
+          [(ngModel)]="quantityAliment" (input)="calculCg()" />
         </mat-chip>
       </mat-chip-list>
     </mat-card-content>

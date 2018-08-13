@@ -23,17 +23,22 @@
     <mat-toolbar class="stretch">
       <mat-form-field>
         <!-- input with autocomplete -->
-        <input type="text" placeholder="Saisir un aliment" aria-label="recetteAliment" matInput [formControl]="myControl" [matAutocomplete]="auto"
+        <input type="text" placeholder="Saisir un aliment" 
+          aria-label="recetteAliment" matInput [formControl]="myControl" 
+          [matAutocomplete]="auto"
           [(ngModel)]="selectedAliment" name="nomAliment">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+          <mat-option *ngFor="let option of filteredOptions | async" 
+           [value]="option">
             {{option.name}}
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
 
       <!-- field quantity portion size -->
-      <input class="poids" type="number" placeholder="Portion g ou cl" [(ngModel)]="quantityPortion" name="quantity" />
+      <input class="poids" type="number" min="1"
+        placeholder="Portion g ou cl" 
+        [(ngModel)]="quantityPortion" name="quantity" />
 
       <!-- conditioned button display on the inputs, of aliment's name and quantity -->
       <button mat-icon-button *ngIf="selectedAliment!= null && quantityPortion != null">
@@ -65,7 +70,8 @@
         <mat-grid-tile [colspan]=1>
           <button mat-icon-button>
             <mat-icon>
-              <a class="rouge" (click)="destockPortion(tableauPortion.indexOf(port))" title="supprimer cet aliment">
+              <a class="rouge" (click)="destockPortion(tableauPortion.indexOf(port))" 
+                 title="supprimer cet aliment">
                 delete_forever</a>
             </mat-icon>
           </button>
@@ -87,7 +93,9 @@
     <!-- comments part-->
     <mat-form-field class="stretch" appearance="outline">
       <mat-label>commentaire</mat-label>
-      <input matInput placeholder="Commentaire" title="saisir un commentaire sur la recette" [(ngModel)]="recette.comment">
+      <input matInput placeholder="Commentaire" 
+        title="saisir un commentaire sur la recette" 
+        [(ngModel)]="recette.comment">
       <mat-icon matSuffix>edit</mat-icon>
     </mat-form-field>
   </div>
