@@ -1,27 +1,53 @@
-# AngGlyce
+# APPLICATION GLYCE & LIFE
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.7.
+### @Authors : 
+Valerie LABROUSSE (valerie.labrousse.pf1@gmail.com)    
+Gaelle THOMAS (gaelle.thomas.pf1@gmail.com)    
+Stephane RODOLAUSSE (stephane.rodolausse.pf1@gmail.com)    
 
-## Development server
+## GLYCE&LIFE Version 2.0.0
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This version of the application allows you to view all the food stored in the base, and whatever the selected food, calculate its glycemic load for a given weight.    
+It also allows to visualize the nutritional details of each food.    
+Another feature is to create recipes based on simple foods in varying proportions and thus to know the overall glycemic load.    
+This feature allows you to save this data for later viewing.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Guide access
 
-## Build
+#### Users guide
+[User notice](https://github.com/vagaste/sprinGlyce/blob/master/USER_GUIDE.MD) available.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+#### Developper guide
+For developpers, you can access to [developpers Guide](https://github.com/vagaste/sprinGlyce/blob/master/Developper_Guide.MD)
 
-## Running unit tests
+#### Deployment guide
+To deploy, you can access to [deployment guide](https://github.com/vagaste/sprinGlyce/blob/master/DEPLOYMENT_GUIDE.MD)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+=================================================================================
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# APPLICATION GLYCE & LIFE
 
-## Further help
+### @Auteurs : 
+Valerie LABROUSSE (valerie.labrousse.pf1@gmail.com)    
+Gaelle THOMAS (gaelle.thomas.pf1@gmail.com)    
+Stephane RODOLAUSSE (stephane.rodolausse.pf1@gmail.com)    
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## GLYCE&LIFE Version 2.0.0
+
+Cette version de l'application permet de visualiser l'ensemble des aliments stockés en base, et quelque soit l'aliment sélectionné, calculer sa charge glycémique pour un poids donné.
+Elle permet aussi de visualiser les détails nutritionnels de chaque aliment.
+Une autre fonctionnalité permet de créer des recettes à base d'aliments simples dans des proportions variées et ainsi de connaître la charge glycémique globale.
+Cette fonctionnalité permet de sauvergarder ces données pour les visualiser ensuite.
+
+## Guide access
+
+#### Guide utilisateurs
+La notice explicative réservée aux utilisateurs est visible [ici](https://github.com/vagaste/sprinGlyce/blob/master/USER_GUIDE.MD)
+
+#### Guide de Developpement 
+Pour les développeurs, l'acces au guide de développement se fait [ici](https://github.com/vagaste/sprinGlyce/blob/master/Developper_Guide.MD)
+
+#### Guide de Déploiement
+Pour le déploiment, cliquez sur le [guide de déploiment](https://github.com/vagaste/sprinGlyce/blob/master/DEPLOYMENT_GUIDE.MD)
